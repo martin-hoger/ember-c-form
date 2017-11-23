@@ -1,0 +1,7 @@
+<fieldset class={{if expanded "form-fieldset" "form-fieldset-collapse"}}>
+  <legend class={{if expanded "form-fieldset-label" "form-fieldset-label-collapse"}} {{action "changeExpanding"}}>{{label}}</legend>
+  {{#if expanded}}
+    {{yield}}
+  {{/if}}
+</fieldset>
+

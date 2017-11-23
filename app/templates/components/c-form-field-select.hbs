@@ -1,0 +1,15 @@
+{{#c-form-field label=label description=description required=required class=class}}
+
+  {{#power-select 
+    disabled=disabled 
+    options=options 
+    selected=selected 
+    searchEnabled=searchEnabled 
+    searchField=searchField 
+    allowClear=allowClear
+    onchange=(action "selected") as |option|}}
+      {{yield option}}
+  {{/power-select}}
+
+{{/c-form-field}}
+

@@ -1,0 +1,19 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{yield}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+    {{#if errorMessage}}
+      {{errorMessage}}
+    {{else}}
+      {{error}}
+    {{/if}}
+  </div>
+{{/if}}

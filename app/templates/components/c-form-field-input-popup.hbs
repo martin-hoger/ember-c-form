@@ -1,0 +1,11 @@
+<a onclick={{action "displayWindow"}}>
+  <i class="{{iconClass}}" aria-hidden="true"></i>
+</a>
+
+<div id="popup-window-{{field}}-{{model.id}}" class="form-field-popup">
+  <a onclick={{action "displayWindow"}} class="form-field-popup-close">
+    <i class="big remove circle icon"></i>
+  </a>
+  {{yield}}
+</div>
+

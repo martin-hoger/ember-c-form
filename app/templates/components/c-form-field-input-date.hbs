@@ -1,0 +1,11 @@
+{{#c-form-field label=label model=model field=field description=description required=required class=class }}
+  {{pikaday-input
+      onSelection=(action 'setDate')
+      value=(mut (get model field))
+      i18n=i18n
+      options=i18n
+      yearRange="1900,currentYear"
+      useUTC=true
+      disabled=(if disabled "disabled" "")
+  }}
+{{/c-form-field}}

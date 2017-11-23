@@ -1,0 +1,13 @@
+{{#c-form-field
+    label=label
+    description=description
+    model=model
+    field=field
+    required=required
+}}
+  {{x-toggle
+      value=isChecked
+      onToggle=(action "toggle")
+  }}
+{{/c-form-field}}
+

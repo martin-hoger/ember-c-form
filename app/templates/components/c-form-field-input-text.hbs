@@ -1,0 +1,11 @@
+{{#c-form-field
+  label=label
+  description=description
+  errorMessage=errorMessage
+  model=model
+  field=field
+  required=required
+  class=class
+}}
+  {{input value=(mut (get model field)) disabled=(if disabled "disabled" "")}}
+{{/c-form-field}}

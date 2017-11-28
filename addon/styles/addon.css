@@ -28,7 +28,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* Semantic UI adjustments */
 .ui.form .error-message   { color: #9F3A38;margin: 6px 0 16px;font-style: italic;}
 .ui.table.clickable       { cursor: pointer; }
-.ui.label                 {font-family: Arial;letter-spacing: normal;vertical-align: middle;white-space: nowrap;font-weight: normal;}
+.ui.label                 {font-family: Arial;letter-spacing: normal;vertical-align: middle;white-space: nowrap;font-weight: normal; margin-left: 0;}
 .ui.tabs                  { margin: 0 0 30px !important; }
 .ui.tabs .item            { color: #616161 !important; }
 .ui.tabs .item.active     { color: #000 !important; }

@@ -31,7 +31,7 @@ export default Ember.Component.extend({
         return;
       }
       // If there is action defined, pass the value.
-      if (this.attrs.onSubmit) {
+      if (this.attrs && this.attrs.onSubmit) {
         this.attrs.onSubmit(this.get("value"));
         this.set("value", "");
         this.set("expanded", false);

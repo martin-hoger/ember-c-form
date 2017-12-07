@@ -1,0 +1,3 @@
+{{#each stars as |selected index|}}
+   <i class="big star icon {{if selected "selected" "unselected"}}" {{action "starSelected" index}}></i>
+{{/each}}

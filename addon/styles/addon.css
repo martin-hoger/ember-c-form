@@ -46,3 +46,5 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .x-toggle-component { display: flex; justify-content: left; align-items: left; }
 .x-toggle:checked + label > .x-toggle-default.x-toggle-btn {background-color: #f2711c;}
 
+/*star rating */
+.star-rating > .icon.unselected { color: #ddd; }

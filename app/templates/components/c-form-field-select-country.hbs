@@ -1,0 +1,18 @@
+{{#c-form-field
+  label=label
+  description=description
+  errorMessage=errorMessage
+  model=model
+  field=field
+  required=required
+  class=class
+}}
+  {{#power-select
+    options=options
+    selected=model.country
+    searchEnabled=true
+    allowClear=allowClear
+    onchange=(action "selected") as |option|}}
+      {{get countries option}}
+  {{/power-select}}
+{{/c-form-field}}

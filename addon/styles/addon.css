@@ -55,9 +55,12 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .x-toggle:checked + label > .x-toggle-default.x-toggle-btn {background-color: #f2711c;}
 
 /*star rating */
+.star-rating                      { white-space: nowrap; }
+.star-rating > .icon              { margin: 0; width: 25px; }
+.star-rating.read-only            { font-size: 14px; }
 .filed-star-rating > .star-rating { margin: 9px 0 0; }
-.star-rating > .icon.unselected { color: #ddd; }
-.star-rating.editable .icon:hover { text-shadow: 1px 1px 0 rgba(0, 0, 0, 1); cursor: pointer; }
+.star-rating > .icon.unselected   { color: #ddd; }
+.star-rating.editable .icon:hover { text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3); cursor: pointer; }
 
 /* Fix for ember-world-flags as there was wrong URL when the project start with URL like /e/.... */
 /* https://github.com/rounders/ember-world-flags */

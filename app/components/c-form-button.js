@@ -7,4 +7,8 @@ export default Ember.Component.extend({
   icon: null,
   loading: false,
 
+  click: function() {
+    this.sendAction();
+  }
+
 });

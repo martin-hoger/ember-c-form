@@ -1,11 +1,16 @@
-{{#c-form-field
-  label=label
-  description=description
-  errorMessage=errorMessage
-  model=model
-  field=field
-  required=required
-  class=class
-}}
-  {{c-star-rating value=(mut (get model field)) editable=true}}
-{{/c-form-field}}
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{c-form-star-rating value=(mut (get model field)) editable=true}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
+

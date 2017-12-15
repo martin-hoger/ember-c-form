@@ -9,9 +9,9 @@
 .form-fieldset                                  { border: 1px solid #BBBBBB; border-radius: 6px; padding: 10px; }
 .form-fieldset-collapse                         { border-top: 1px solid #BBBBBB; border-radius: 6px; padding: 10px; margin-left: 1px; }
 
-.form-fieldset-label                            { font-size: 14px; font-weight: bold; color: #f25c19; background: transparent url(images/menu-expanded.png) 4px 8px no-repeat;
+.form-fieldset-label                            { font-size: 14px; font-weight: bold; color: #f25c19; background: transparent url(../ember-c-form/menu-expanded.png) 4px 8px no-repeat;
                                                   padding-left: 14px; cursor: pointer; }
-.form-fieldset-label-collapse                   { font-size: 14px; font-weight: bold; color: #f25c19; background: transparent url(images/menu-collapsed.png) 4px 5px no-repeat;
+.form-fieldset-label-collapse                   { font-size: 14px; font-weight: bold; color: #f25c19; background: transparent url(../ember-c-form/menu-collapsed.png) 4px 5px no-repeat;
                                                   padding-left: 14px; cursor: pointer; }
 .form-change-input                              { margin-bottom: 10px; cursor: pointer; }
 
@@ -38,8 +38,16 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.disabled            { pointer-events: none; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 .form.disabled .button    { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 
-.form.small .ember-power-select-trigger {height: 40px;line-height: 37px;overflow-y: hidden;border-color: rgba(34, 36, 38, 0.15);}
-.ember-power-select-option {line-height: 32px;font-size: 13px;}
+/* Select */
+.form .ember-power-select-trigger { height: 38px; line-height: 35px; overflow-y: hidden; border-color: rgba(34, 36, 38, 0.15); }
+.form .ember-power-select-selected-item, 
+.from .ember-power-select-placeholder { margin-left: 13px; }
+/* This must stay without any other class before the selector,
+ * as the component is display on special place in the DOM. */
+.ember-power-select-option  {line-height: 32px;font-size: 13px; padding-left: 13px; }
+
+.ember-power-select-option .flag32,
+.form-select-country .flag32 { vertical-align: middle; margin: 0 7px 0 0; }
 
 /* X-toggle */
 .x-toggle-container { padding: 0; }
@@ -47,4 +55,11 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .x-toggle:checked + label > .x-toggle-default.x-toggle-btn {background-color: #f2711c;}
 
 /*star rating */
+.filed-star-rating > .star-rating { margin: 9px 0 0; }
 .star-rating > .icon.unselected { color: #ddd; }
+.star-rating.editable .icon:hover { text-shadow: 1px 1px 0 rgba(0, 0, 0, 1); cursor: pointer; }
+
+/* Fix for ember-world-flags as there was wrong URL when the project start with URL like /e/.... */
+/* https://github.com/rounders/ember-world-flags */
+.flag16 { background-image: url(../ember-world-flags/images/flags16.png) !important; }
+.flag32 { background-image: url(../ember-world-flags/images/flags32.png) !important; }

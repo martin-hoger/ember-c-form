@@ -1,11 +1,27 @@
-{{#c-form-field
-  label=label
-  description=description
-  errorMessage=errorMessage
-  model=model
-  field=field
-  required=required
-  class=class
-}}
-  {{input value=(mut (get model field)) disabled=(if disabled "disabled" "")}}
-{{/c-form-field}}
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{input type=type value=(mut (get model field)) disabled=(if disabled "disabled" "")}}
+
+{{#if unit}}
+  <div class="unit">{{unit}}</div>
+{{/if}}
+
+{{#if suffixIcon}}
+  <i class="{{suffixIcon}} icon suffix-icon" {{action suffixIconAction}}></i>
+{{/if}}
+
+{{#if hasBlock}}
+  {{yield}}
+{{/if}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}

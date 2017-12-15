@@ -1,13 +1,23 @@
-{{#c-form-field
-    label=label
-    description=description
-    model=model
-    field=field
-    required=required
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{x-toggle
+    theme="flip"
+    size="small"
+    onLabel=true
+    offLabel=false
+    value=isChecked
+    onToggle=(action "toggle")
 }}
-  {{x-toggle
-      value=isChecked
-      onToggle=(action "toggle")
-  }}
-{{/c-form-field}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
 

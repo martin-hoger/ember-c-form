@@ -1,11 +1,10 @@
 import Ember from 'ember';
 import moment from 'moment';
-import { task, timeout } from 'ember-concurrency';
+import FieldMixin from './c-form-field-mixin';
 
-export default Ember.Component.extend({
-  i18n        : null,
-  taskTimeout : '1000',
-  tagName     : '',
+export default Ember.Component.extend(FieldMixin, {
+  i18n       : null,
+  filedType  : 'input-datetime',
     
   init() {
     this._super(...arguments);
@@ -16,17 +15,9 @@ export default Ember.Component.extend({
   actions: {
     //Selection from time input. 
     setTime: function() {
-      this.get('timeRequest').perform();
+      this.setDatetime();
     }
   },
-  
-  //Time request (Ember concurrency).
-  timeRequest: task(function * () {
-    //Timeout.
-    yield timeout(this.get('taskTimeout'));
-    //Set datetime.
-    this.setDatetime();
-  }).restartable(),
   
   //Set datetime
   setDatetime: function() {
@@ -34,12 +25,8 @@ export default Ember.Component.extend({
     var hours   = moment(this.get('time'), "HH:mm").hours();
     var minutes = moment(this.get('time'), "HH:mm").minutes();
     this.set('model.' + this.get('field'), moment(date).startOf('day').add(hours, 'hours').add(minutes, 'minutes')._d);
-    //Update model.
-    if (this.get('save')) {
-      this.model.save();
-    }
+
+    this.sendAction();
   },
 
 });
-
-

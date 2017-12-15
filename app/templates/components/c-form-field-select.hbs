@@ -1,15 +1,29 @@
-{{#c-form-field label=label description=description required=required class=class}}
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
 
-  {{#power-select 
-    disabled=disabled 
-    options=options 
-    selected=selected 
-    searchEnabled=searchEnabled 
-    searchField=searchField 
-    allowClear=allowClear
-    onchange=(action "selected") as |option|}}
+{{#power-select 
+  disabled=disabled 
+  options=inputOptions
+  selected=selected 
+  searchEnabled=searchEnabled 
+  searchField=searchField 
+  allowClear=allowClear
+  onchange=(action "selected") as |option|}}
+    {{#if hasBlock}}
       {{yield option}}
-  {{/power-select}}
+    {{else}}
+      {{option}}
+    {{/if}}
+{{/power-select}}
 
-{{/c-form-field}}
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
 

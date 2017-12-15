@@ -1,15 +1,15 @@
 /*
-  c-stars-display component
+  c-form-star-rating component
   Shows as many stars, as the number in value.
   The color of all stars is accordïng value.
 
   usage in .hbs:
-  {{c-stars-display value=0}    => no star displayed
-  {{c-stars-display value=3}    => 3 yellow stars displayed
-  {{c-stars-display value=row.rating}}
-  {{c-stars-display value=row.rating editable=true}}  => user can edit rating by click
-  {{c-stars-display value=row.rating editable=true onSelect=(action "onSelect")}}    => action added, when user clicks
-  {{c-stars-display value=row.rating editable=true onSelect=(toggle "www" row)}}     => different action
+  {{c-form-star-rating value=0}    => no star displayed
+  {{c-form-star-rating value=3}    => 3 yellow stars displayed
+  {{c-form-star-rating value=row.rating}}
+  {{c-form-star-rating value=row.rating editable=true}}  => user can edit rating by click
+  {{c-form-star-rating value=row.rating editable=true onSelect=(action "onSelect")}}    => action added, when user clicks
+  {{c-form-star-rating value=row.rating editable=true onSelect=(toggle "www" row)}}     => different action
 
 */
 
@@ -19,15 +19,15 @@ export default Ember.Component.extend({
 
   colors : {
     0 : '#FFFFFF',  // not used (no star)
-    1 : '#FF0000',  // red
-    2 : '#FFA500',  // orange
-    3 : '#FFFF00',  // yellow
-    4 : '#9ACD32',  // yellowgreen
-    5 : '#008000',  // green
+    1 : '#E02C2C',  // red
+    2 : '#E5A62C',  // orange
+    3 : '#E8DB2C',  // yellow
+    4 : '#CBDB2F',  // yellowgreen
+    5 : '#51D334',  // green
   },
 
   classNames        : ['star-rating'],
-  classNameBindings : ['editable'],
+  classNameBindings : ['editable:editable:read-only'],
   attributeBindings : ['style'],
   editable          : false,
 

@@ -11,7 +11,8 @@
     "ember-moment": "7.0.1",
     "ember-pikaday": "2.2.2",
     "ember-toggle": "5.2.1",
-    "ember-power-select": "1.10.2"
+    "ember-power-select": "1.10.2",
+    "ember-cp-validations": "3.3.0"
   },
   "devDependencies": {
     "ember-pikaday": "2.2.2"

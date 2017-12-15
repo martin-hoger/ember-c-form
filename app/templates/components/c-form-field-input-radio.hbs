@@ -1,0 +1,30 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+<div class="inline fields">
+  {{#each options as |option|}}
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input
+           type="radio"
+           name={{name}}
+           value={{option.id}}
+           onChange={{action "changeValue" option}}
+           checked={{if (eq option.id (get model field)) "checked"}}
+        >
+        <label>{{option.value}}</label>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if error}}
+  <div class="error-message">
+    {{error}}
+  </div>
+{{/if}}

@@ -1,18 +1,13 @@
-{{#c-form-field
-  label=label
-  description=description
-  errorMessage=errorMessage
-  model=model
-  field=field
-  required=required
-  class=class
-}}
-  {{#power-select
-    options=options
-    selected=model.country
-    searchEnabled=true
+{{#c-form-field-select 
+    label=label
+    model=model
+    field=field
+    required=required
+    description=description
+    class="form-select-country"
     allowClear=allowClear
-    onchange=(action "selected") as |option|}}
-      {{get countries option}}
-  {{/power-select}}
-{{/c-form-field}}
+    options=countries 
+    as |country|
+}}
+  {{world-flag country.id 32}} {{country.value}}
+{{/c-form-field-select}}

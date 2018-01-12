@@ -66,3 +66,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* https://github.com/rounders/ember-world-flags */
 .flag16 { background-image: url(../ember-world-flags/images/flags16.png) !important; }
 .flag32 { background-image: url(../ember-world-flags/images/flags32.png) !important; }
+
+/* Editable input */
+.editable-value > .input { max-width: 100%; }
+.editable-value .icon    { pointer-events: all !important; cursor: pointer !important; }

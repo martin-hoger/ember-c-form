@@ -1,0 +1,10 @@
+{{#if editMode}}
+  <div class="ui icon input">
+    {{input value=value enter=(action "save") escape-press=(action "cancel")}}
+    <i class="inverted circular save icon {{color}}" {{action "save" model}}></i>
+  </div>
+{{else}}
+  <div {{action "startEditMode"}}>
+    {{yield}}
+  </div>
+{{/if}}

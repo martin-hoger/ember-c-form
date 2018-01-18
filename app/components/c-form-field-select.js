@@ -1,6 +1,26 @@
 import Ember from 'ember';
 import FieldMixin from './c-form-field-mixin';
 
+/**
+Usage:
+
+  {{c-form-field-select 
+      label="Cenová skupina"
+      model=row
+      field="priceCategory"
+      options=(array "M" "P-A" "P-B" "P-C" "P-D")
+  }}
+
+  {{#c-form-field-select 
+      label="Autor"
+      model=article
+      field="user"
+      options=users as |user|
+  }}
+    {{user.name}}
+  {{/c-form-field-select}}
+ 
+ */
 export default Ember.Component.extend(FieldMixin, {
   filedType   : 'select',
   searchField : null,
@@ -8,6 +28,8 @@ export default Ember.Component.extend(FieldMixin, {
   init() {
     this._super(...arguments);
 
+    // Variable "selected" (passed to power select) is computed property.
+    // 
     // Define computed property dynamically.
     // It is not possible to define computed property with variable in it.
     //     It is not possible to make:

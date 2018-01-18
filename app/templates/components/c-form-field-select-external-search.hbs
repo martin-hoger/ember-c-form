@@ -1,0 +1,27 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{#power-select 
+  disabled=disabled 
+  selected=selected
+  allowClear=allowClear
+  search=(action "search")
+  onchange=(action "selected") as |option|}}
+    {{#if hasBlock}}
+      {{yield option}}
+    {{else}}
+      {{option}}
+    {{/if}}
+{{/power-select}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
+

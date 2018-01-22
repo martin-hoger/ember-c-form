@@ -6,6 +6,8 @@ module.exports = {
     return true;
   },
 
+  includeTestsInHosts: true,
+
   included: function(app, parentAddon) {
     var target = (parentAddon || app);
     target.options = target.options || {};

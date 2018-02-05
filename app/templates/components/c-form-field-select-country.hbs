@@ -1,13 +1,14 @@
 {{#c-form-field-select 
-    label=label
-    model=model
-    field=field
-    required=required
-    description=description
-    class="form-select-country"
-    allowClear=allowClear
-    options=countries 
-    as |country|
+  label=label
+  model=model
+  field=field
+  required=required
+  description=description
+  class="form-select-country"
+  allowClear=allowClear
+  placeholder=placeholder
+  options=countries 
+  as |country|
 }}
   {{world-flag country.id 32}} {{country.value}}
 {{/c-form-field-select}}

@@ -2,7 +2,7 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{input type=type value=(mut (get model field)) disabled=(if disabled "disabled" "")}}
+{{input type=type value=(mut (get model field)) min=min max=max placeholder=placeholder disabled=(if disabled "disabled" "")}}
 
 {{#if unit}}
   <div class="unit">{{unit}}</div>

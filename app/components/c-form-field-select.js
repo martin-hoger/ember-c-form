@@ -44,7 +44,7 @@ export default Ember.Component.extend(FieldMixin, {
   },
 
   // Some data needs to be converted.
-  inputOptions: Ember.computed('options', function () {
+  inputOptions: Ember.computed('options.[]', function () {
     return this.convertInput(this.get('options'));
   }),
 

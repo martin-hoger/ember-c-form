@@ -39,9 +39,14 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.disabled .button    { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 
 /* Select */
-.form .ember-power-select-trigger { height: 38px; line-height: 35px; overflow-y: hidden; border-color: rgba(34, 36, 38, 0.15); }
+.ember-power-select-trigger,
+.ember-power-select-dropdown            { font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+.form .ember-power-select-trigger       { height: 38px;line-height: 38px;overflow-y: hidden; border: 1px solid rgba(34, 36, 38, 0.15); color: rgba(0, 0, 0, 0.87);}
+.form.small .ember-power-select-trigger {height: 35px;line-height: 34px;}
 .form .ember-power-select-selected-item, 
-.from .ember-power-select-placeholder { margin-left: 13px; }
+.form .ember-power-select-placeholder   { margin: 0 1em; }
+.form .ember-power-select-placeholder   { color: #c1c1c1;  }
+.ember-power-select-clear-btn           { font-size: 24px; }
 /* This must stay without any other class before the selector,
  * as the component is display on special place in the DOM. */
 .ember-power-select-option  {line-height: 32px;font-size: 13px; padding-left: 13px; }

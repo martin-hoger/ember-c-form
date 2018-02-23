@@ -41,6 +41,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* Select */
 .ember-power-select-trigger,
 .ember-power-select-dropdown            { font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif; }
+.ember-power-select-options[role="listbox"] { max-height: 450px; }
 .form .ember-power-select-trigger       { height: 38px;line-height: 38px;overflow-y: hidden; border: 1px solid rgba(34, 36, 38, 0.15); color: rgba(0, 0, 0, 0.87);}
 .form.small .ember-power-select-trigger {height: 35px;line-height: 34px;}
 .form .ember-power-select-selected-item, 

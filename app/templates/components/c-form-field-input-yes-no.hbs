@@ -1,0 +1,24 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+<div
+    onClick={{action "changeValue" "Yes"}}
+    class="form-field-input-yes {{if buttonYes 'form-field-input-yes-checked'}}"
+></div>
+
+<div
+    onClick={{action "changeValue" "No"}}
+    class="form-field-input-no {{if buttonNo 'form-field-input-no-checked'}}"
+></div>
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
+

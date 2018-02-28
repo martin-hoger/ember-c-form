@@ -76,3 +76,11 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* Editable input */
 .editable-value > .input { max-width: 100%; }
 .editable-value .icon    { pointer-events: all !important; cursor: pointer !important; }
+
+/* Yes or no toggle */
+.form-field-input-yes          { background: #AE95A7 url(images/icons/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
+.form-field-input-no           { background: #AE95A7 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; } 
+.form-field-input-yes, 
+.form-field-input-no           { width: 54px; height: 20px; border-radius: 3px; float:left; margin-right: 9px; } 
+.form-field-input-yes-checked  { background: #AA1982 url(images/icons/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
+.form-field-input-no-checked   { background: #AA1982 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; } 

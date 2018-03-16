@@ -4,7 +4,7 @@ import FieldMixin from './c-form-field-mixin';
 
 export default Ember.Component.extend(FieldMixin, {
   i18n       : null,
-  filedType  : 'input-datetime',
+  fieldType  : 'input-datetime',
     
   init() {
     this._super(...arguments);

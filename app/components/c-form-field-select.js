@@ -22,8 +22,9 @@ Usage:
  
  */
 export default Ember.Component.extend(FieldMixin, {
-  filedType   : 'select',
+  fieldType   : 'select',
   searchField : null,
+  multiple    : false,
 
   init() {
     this._super(...arguments);

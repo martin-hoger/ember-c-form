@@ -2,15 +2,17 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{pikaday-input
-    onSelection=(action "setDate")
-    value=(mut (get model field))
-    i18n=i18n
-    options=i18n
-    yearRange="1900,currentYear"
-    useUTC=true
-    disabled=(if disabled "disabled" "")
-}}
+{{#if pikadayInput}}
+  {{component pikadayInput
+      onSelection=(action "setDate")
+      value=(mut (get model field))
+      i18n=i18n
+      options=i18n
+      yearRange="1900,currentYear"
+      useUTC=true
+      disabled=(if disabled "disabled" "")
+  }}
+{{/if}}
 
 {{#if description}}
   <div class="description">{{description}}</div>

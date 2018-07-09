@@ -15,6 +15,11 @@ export default Ember.Component.extend(FieldMixin, {
   init() {
     this._super(...arguments);
     this.changeLanguage();
+
+    this.set('pikadayInput', 'pikaday-input');
+    if (this.get('inputless')) {
+      this.set('pikadayInput', 'pikaday-inputless');
+    }
   },
 
   actions: {

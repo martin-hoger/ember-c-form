@@ -2,23 +2,47 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{#power-select 
-  disabled=disabled 
-  options=inputOptions
-  selected=selected 
-  searchEnabled=searchEnabled 
-  searchField=searchField 
-  allowClear=allowClear
-  verticalPosition=verticalPosition
-  dropdownClass=dropdownClass
-  placeholder=placeholder
-  onchange=(action "selected") as |option|}}
-    {{#if hasBlock}}
-      {{yield option}}
-    {{else}}
-      {{option}}
-    {{/if}}
-{{/power-select}}
+{{#if multiple}}
+
+  {{#power-select-multiple
+    disabled=disabled 
+    options=inputOptions
+    selected=selected 
+    searchEnabled=searchEnabled 
+    searchField=searchField 
+    allowClear=allowClear
+    verticalPosition=verticalPosition
+    dropdownClass=dropdownClass
+    placeholder=placeholder
+    onchange=(action "selected") as |option|}}
+      {{#if hasBlock}}
+        {{yield option}}
+      {{else}}
+        {{option}}
+      {{/if}}
+  {{/power-select-multiple}}
+
+{{else}}
+
+  {{#power-select 
+    disabled=disabled 
+    options=inputOptions
+    selected=selected 
+    searchEnabled=searchEnabled 
+    searchField=searchField 
+    allowClear=allowClear
+    verticalPosition=verticalPosition
+    dropdownClass=dropdownClass
+    placeholder=placeholder
+    onchange=(action "selected") as |option|}}
+      {{#if hasBlock}}
+        {{yield option}}
+      {{else}}
+        {{option}}
+      {{/if}}
+  {{/power-select}}
+
+{{/if}}
 
 {{#if description}}
   <div class="description">{{description}}</div>

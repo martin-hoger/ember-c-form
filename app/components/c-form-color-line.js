@@ -16,13 +16,14 @@ import { htmlSafe } from '@ember/string';
 export default Component.extend({
 
   tagName  : 'div',
-  classNames: ['c-form-color-line'],
+  classNames: ['form-color-line'],
   attributeBindings: ['style'],
 
   style: computed('color', function(){
     // debugger;
     var bgColor = this.get('color');
-    var styleStr = `background-color: ${bgColor}; display:inline-block; height:20px; width:95%`;
+    var styleStr = `background-color: ${bgColor}`;
+    // var styleStr = `background-color: ${bgColor}; display:inline-block; height:38px; width:100%`;
     return htmlSafe(styleStr); //this returns the safe html text
   }),
 

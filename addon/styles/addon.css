@@ -52,7 +52,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.small .ember-power-select-multiple-option { line-height: 27px; }
 
 .ember-power-select-trigger-multiple-input { border: 0px !important; outline-offset: 0px; width: 150px !important; padding-left: 5px !important; box-sizing: border-box; }
-.form .ember-power-select-selected-item, 
+.form .ember-power-select-selected-item,
 .form .ember-power-select-placeholder   { margin: 0 1em; }
 .form .ember-power-select-placeholder   { color: #c1c1c1;  }
 .ember-power-select-clear-btn           { font-size: 24px; }
@@ -90,8 +90,15 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 /* Yes or no toggle */
 .form-field-input-yes          { background: #AE95A7 url(images/icons/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
-.form-field-input-no           { background: #AE95A7 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; } 
-.form-field-input-yes, 
-.form-field-input-no           { width: 54px; height: 20px; border-radius: 3px; float:left; margin-right: 9px; } 
+.form-field-input-no           { background: #AE95A7 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; }
+.form-field-input-yes,
+.form-field-input-no           { width: 54px; height: 20px; border-radius: 3px; float:left; margin-right: 9px; }
 .form-field-input-yes-checked  { background: #AA1982 url(images/icons/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
-.form-field-input-no-checked   { background: #AA1982 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; } 
+.form-field-input-no-checked   { background: #AA1982 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; }
+
+/* ember-power-select-selected-item */
+.form-color-line               {display:block; height:24px; width: auto; margin-left: 0; margin-right: 13px;}
+.form-field-select-color-from-object .ember-power-select-selected-item
+                               {margin: 0;}
+.form-field-select-color-from-object .ember-power-select-selected-item .form-color-line
+                               {margin: 0; height:100%; width:100%}

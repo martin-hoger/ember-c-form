@@ -16,16 +16,6 @@ import { htmlSafe } from '@ember/string';
 */
 export default Component.extend({
 
-  tagName  : '',
-  // countries: getNames('en'),
-
-  // myStyle: computed('type', function(){
-  //   // debugger;
-  //   var bgColor = this.get('type.value');
-  //   var styleStr = `background-color: ${bgColor}; display: block`;
-  //   return htmlSafe(styleStr); //this returns the safe html text
-  //
-  // }),
-
+  tagName   : '',
 
 });

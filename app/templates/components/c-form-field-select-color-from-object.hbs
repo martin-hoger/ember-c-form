@@ -1,0 +1,43 @@
+{{log "options v c-color" options}}
+{{!-- {{#c-form-field-select
+  label=label
+  model=model
+  field=field
+  required=required
+  description=description
+  class="form-select-color"
+  allowClear=allowClear
+  placeholder=placeholder
+  options=options
+  as |type|
+}}
+  {{#c-label-colored bgColor=type.value textColor="#000"}}
+
+  {{/c-label-colored}}
+{{/c-form-field-select}} --}}
+
+{{#c-form-field-select
+  label=label
+  model=model
+  field=field
+  required=required
+  description=description
+  class="form-select-color"
+  allowClear=allowClear
+  placeholder=placeholder
+  options=options
+  as |type|
+}}
+   {{c-form-color-line color=type.value}}
+{{/c-form-field-select}}
+
+  {{!-- <div style={{myStyle}}></div>
+{{/c-form-field-select}} --}}
+
+
+{{!-- <div style="background-color:{{type.value}}; display: block">&nbsp</div> --}}
+{{!-- <div style="background-color: #660066; display: block">&nbsp</div> --}}
+
+{{!-- as |option|
+}}
+{{world-flag country.id 32}} {{country.value}} --}}

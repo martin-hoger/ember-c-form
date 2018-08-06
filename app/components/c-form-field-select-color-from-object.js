@@ -1,7 +1,4 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
-import { htmlSafe } from '@ember/string';
-// import { getNames } from 'ember-i18n-iso-countries';
 
 /*
   Usage in .hbs:

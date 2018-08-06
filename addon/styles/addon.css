@@ -118,9 +118,11 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form-field-input-yes-checked  { background: #AA1982 url(images/icons/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
 .form-field-input-no-checked   { background: #AA1982 url(images/icons/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; }
 
-/* ember-power-select-selected-item */
-.form-color-line               {display:block; height:24px; width: auto; margin-left: 0; margin-right: 13px;}
+/* c-form-color-line */
+.form-color-line               { display:block; height:24px; width: auto; margin-left: 0; margin-right: 13px; text-align: right; padding: 5px 10px;}
+
+/* c-form-field-select-color-from-object */
 .form-field-select-color-from-object .ember-power-select-selected-item
-                               {margin: 0;}
+                               { margin: 0;}
 .form-field-select-color-from-object .ember-power-select-selected-item .form-color-line
-                               {margin: 0; height:100%; width:100%}
+                               { margin: 0; height:100%; width: 98%; display: inline-block;}

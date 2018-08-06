@@ -1,18 +1,15 @@
+/*
+  Displays line with passed color, also possible to pass a text on the line
+  
+  Usage in .hbs:
+ {{c-form-color-line color=yourColor text=yourText}}
+
+*/
+
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { htmlSafe } from '@ember/string';
 
-/*
-  Usage in .hbs:
-  {{c-form-field-select-color-from-object
-    model=modelName
-    field="fieldName"
-    label="labelName"
-    allowClear=true
-    options=settings.highlightColors
-  }}
-
-*/
 export default Component.extend({
 
   tagName  : 'div',
@@ -20,10 +17,8 @@ export default Component.extend({
   attributeBindings: ['style'],
 
   style: computed('color', function(){
-    // debugger;
     var bgColor = this.get('color');
     var styleStr = `background-color: ${bgColor}`;
-    // var styleStr = `background-color: ${bgColor}; display:inline-block; height:38px; width:100%`;
     return htmlSafe(styleStr); //this returns the safe html text
   }),
 

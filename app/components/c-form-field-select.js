@@ -99,7 +99,10 @@ export default Ember.Component.extend(FieldMixin, {
    */
   convertOutput(value) {
     var options = this.get('options');
-
+    // If the values is null, return it.
+    if (value === null) {
+      return value;
+    }
     // If it is plain object, we need to just use the key.
     if (Ember.typeOf(options) === 'object') {
       value = value.id;

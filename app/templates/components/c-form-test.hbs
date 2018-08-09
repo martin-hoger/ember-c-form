@@ -1,118 +1,226 @@
-{{#each formSizes as |formSize|}}
-  formSize: {{formSize}}<br/>
-  <form class="ui {{formSize}} form">
-    <div class="four fields">
-      {{c-form-field-input-text
-        model=this
-        field="inputText"
-        label="c-form-field-input-text"
-        allowClear=true
-      }}
+<div id="c-form-test-content">
 
-      {{#c-form-field-select
-        model=this
-        field="inputSelect"
-        label="c-form-field-select"
-        allowClear=true
-        options=educationTypes
-        as |type|
-      }}
-        {{type.value}}
-      {{/c-form-field-select}}
+  {{#each formSizes as |formSize|}}
+    formSize: {{formSize}}<br/>
+    <form class="ui {{formSize}} form">
 
-      {{c-form-field-input-date
-        model=this
-        field="inputDate"
-        label="c-form-field-input-date"
-        allowClear=true
-      }}
+      {{!-- =========== All elements with label ============================ --}}
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          label="c-form-field-input-text"
+          allowClear=true
+        }}
 
-      {{c-form-field-input-datetime
-        model=this
-        field="inputDatetime"
-        label="c-form-field-input-datetime"
-        allowClear=true
-      }}
-    </div>
+        {{#c-form-field-select
+          model=this
+          field="inputSelect"
+          label="c-form-field-select"
+          allowClear=true
+          options=educationTypes
+          as |type|
+        }}
+          {{type.value}}
+        {{/c-form-field-select}}
 
-    <div class="four fields">
-      {{c-form-field-input-text
-        model=this
-        field="inputText"
-        label="c-form-field-input-text"
-        allowClear=true
-      }}
+        {{c-form-field-input-date
+          model=this
+          field="inputDate"
+          label="c-form-field-input-date"
+          allowClear=true
+        }}
 
-      {{c-form-field-input-checkbox
-        model=this
-        field="inputSelect"
-        label="c-form-field-input-checkbox"
-      }}
+        {{c-form-field-input-datetime
+          model=this
+          field="inputDatetime"
+          label="c-form-field-input-datetime"
+          allowClear=true
+        }}
+      </div>
 
-      {{c-form-field-input-radio
-        model=this
-        field="inputSelect"
-        label="c-form-field-input-radio"
-      }}
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          label="c-form-field-input-text"
+          allowClear=true
+        }}
 
-      {{c-form-field-input-yes-no
-        model=this
-        field="inputSelect"
-        label="c-form-field-input-yes-no"
-        allowClear=true
-      }}
-    </div>
+        {{c-form-field-input-checkbox
+          model=this
+          field="inputBool"
+          label="c-form-field-input-checkbox"
+        }}
 
-    <div class="four fields">
-      {{c-form-field-input-text
-        model=this
-        field="inputText"
-        label="c-form-field-input-text"
-        allowClear=true
-      }}
+        {{c-form-field-input-radio
+          model=this
+          field="inputSelect"
+          label="c-form-field-input-radio"
+          options=radioOptions
+        }}
 
-      {{c-form-field-select-color-from-object
-        model=this
-        field="highlightColor"
-        label="c-form-field-select-color-from-object"
-        options=highlightColors
-      }}
+        {{c-form-field-input-yes-no
+          model=this
+          field="inputBool"
+          label="c-form-field-input-yes-no"
+          allowClear=true
+        }}
+      </div>
 
-      {{c-form-field-select-country
-        model=this
-        field="country"
-        label="c-form-field-select-country"
-        allowClear=true
-      }}
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          label="c-form-field-input-text"
+          allowClear=true
+        }}
 
-      {{c-form-field-star-rating
-        model=this
-        field="rating"
-        label="c-form-field-star-rating"
-      }}
-    </div>
+        {{c-form-field-select-color-from-object
+          model=this
+          field="highlightColor"
+          label="c-form-field-select-color-from-object"
+          options=highlightColors
+          allowClear=true
+        }}
+
+        {{c-form-field-select-country
+          model=this
+          field="country"
+          label="c-form-field-select-country"
+          allowClear=true
+        }}
+
+        {{c-form-field-star-rating
+          model=this
+          field="rating"
+          label="c-form-field-star-rating"
+        }}
+      </div>
+
+      <br/>
+      <br/>
+
+      {{!-- =========== All elements without label ============================  --}}
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          placeholder="c-form-field-input-text"
+          allowClear=true
+        }}
+
+        {{#c-form-field-select
+          model=this
+          field="inputSelect"
+          placeholder="c-form-field-select"
+          allowClear=true
+          options=educationTypes
+          as |type|
+        }}
+          {{type.value}}
+        {{/c-form-field-select}}
+
+        {{c-form-field-input-date
+          model=this
+          field="inputDate"
+          placeholder="c-form-field-input-date"
+          allowClear=true
+        }}
+
+        {{c-form-field-input-datetime
+          model=this
+          field="inputDatetime"
+          placeholder="c-form-field-input-datetime"
+          allowClear=true
+        }}
+      </div>
+
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          placeholder="c-form-field-input-text"
+          allowClear=true
+        }}
+
+        {{c-form-field-input-checkbox
+          model=this
+          field="inputBool"
+          placeholder="c-form-field-input-checkbox"
+        }}
+
+        {{c-form-field-input-radio
+          model=this
+          field="inputSelect"
+          placeholder="c-form-field-input-radio"
+          options=radioOptions
+        }}
+
+        {{c-form-field-input-yes-no
+          model=this
+          field="inputBool"
+          placeholder="c-form-field-input-yes-no"
+          allowClear=true
+        }}
+      </div>
+
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          placeholder="c-form-field-input-text"
+          allowClear=true
+        }}
+
+        {{c-form-field-select-color-from-object
+          model=this
+          field="highlightColor"
+          placeholder="c-form-field-select-color-from-object"
+          options=highlightColors
+          allowClear=true
+        }}
+
+        {{c-form-field-select-country
+          model=this
+          field="country"
+          placeholder="c-form-field-select-country"
+          allowClear=true
+        }}
+
+        {{c-form-field-star-rating
+          model=this
+          field="rating"
+          placeholder="c-form-field-star-rating"
+        }}
+      </div>
+
+    <br/>
+
+    {{c-form-button
+      icon="save"
+      label="Save"
+    }}
+
+    {{c-form-button-add
+      text="New patient"
+      color="gray"
+      label="c-form-button-add"
+      placeholder="c-form-button-add"
+    }}
+
+    {{c-form-field-input-textarea
+      model=this
+      field="notes"
+      label="c-form-field-input-textarea"
+    }}
+
   </form>
-  <br/>
-
-  {{c-form-button
-    icon="save"
-    label="Save"
-  }}
-
-  {{c-form-button-add
-    text="New patient"
-    color="gray"
-    label="c-form-button-add"
-    placeholder="c-form-button-add"
-  }}
-
-  {{c-form-field-input-textarea
-    model=this
-    field="notes"
-    label="c-form-field-input-textarea"
-  }}
 
   <br/>
   <br/>
   <br/>
-{{/each}}
+  <br/>
+  {{/each}}
+
+</div>

@@ -126,3 +126,6 @@ button[disabled]     { cursor: default; background-color: #888888; }
                                { margin: 0;}
 .form-field-select-color-from-object .ember-power-select-selected-item .form-color-line
                                { margin: 0; height:100%; width: 98%; display: inline-block;}
+
+/* c-form-test */
+#c-form-test-content           { position: relative; margin: 30px 30px 40px !important; width: auto; max-width: 100% !important; }

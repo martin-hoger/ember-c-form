@@ -21,4 +21,10 @@ export default Component.extend({
     "40": "University"
   },
 
+  radioOptions: [
+    {'id': '10', value: 'No education'},
+    {'id': '20', value: 'Primary school'},
+    {'id': '30', value: 'High school'},
+    {'id': '40', value: 'University'},
+  ],
 });

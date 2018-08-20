@@ -1,5 +1,8 @@
-import Ember from 'ember';
 import FieldMixin from './c-form-field-mixin';
+import Component from '@ember/component';
+import { defineProperty } from '@ember/object';
+import { computed } from '@ember/object';
+import { typeOf } from '@ember/utils';
 
 /**
 Usage:
@@ -19,9 +22,19 @@ Usage:
   }}
     {{user.name}}
   {{/c-form-field-select}}
+
+  {{#c-form-field-select 
+      label="Autor"
+      model=article
+      field="user"
+      searchField="name"
+      options=users as |user|
+  }}
+    {{user.name}}
+  {{/c-form-field-select}}
  
  */
-export default Ember.Component.extend(FieldMixin, {
+export default Component.extend(FieldMixin, {
   fieldType   : 'select',
   searchField : null,
   multiple    : false,
@@ -35,8 +48,8 @@ export default Ember.Component.extend(FieldMixin, {
     // It is not possible to define computed property with variable in it.
     //     It is not possible to make:
     //     Ember.computed('model.' + this.get('field')
-    Ember.defineProperty(this, 'selected', 
-      Ember.computed('model.' + this.get('field'), function() {
+    defineProperty(this, 'selected', 
+      computed('model.' + this.get('field'), function() {
         var value = this.get('model.' + this.get('field'));
         return this.convertSelected(value);
       })
@@ -45,12 +58,12 @@ export default Ember.Component.extend(FieldMixin, {
   },
 
   // Some data needs to be converted.
-  inputOptions: Ember.computed('options.[]', function () {
+  inputOptions: computed('options.[]', function () {
     return this.convertInput(this.get('options'));
   }),
 
   // If search key is passed, enable search.
-  searchEnabled: Ember.computed('searchField', function () {
+  searchEnabled: computed('searchField', function () {
     return this.get('searchField') ? true : false;
   }),
 
@@ -78,11 +91,7 @@ export default Ember.Component.extend(FieldMixin, {
     //    { "key1" : "value1", "key2" : "value2", ... }
     // Final:
     //    [{ "id" : "key1", "value" : "value1" }, { ... }, ...]
-    if (Ember.typeOf(options) === 'object') {
-      // If there is not searchField, set to "value".
-      if (this.get('searchField') === null) {
-        this.set('searchField', 'value');
-      }
+    if (typeOf(options) === 'object') {
       var tmpOptions = options;
       options = [];
       for (var key in tmpOptions) {
@@ -104,7 +113,7 @@ export default Ember.Component.extend(FieldMixin, {
       return value;
     }
     // If it is plain object, we need to just use the key.
-    if (Ember.typeOf(options) === 'object') {
+    if (typeOf(options) === 'object') {
       value = value.id;
     }
 
@@ -122,8 +131,8 @@ export default Ember.Component.extend(FieldMixin, {
     var options = this.get('options');
 
     // If it is plain object.
-    if (Ember.typeOf(options) === 'object') {
-      value = this.get("inputOptions").findBy("id", value);
+    if (typeOf(options) === 'object') {
+      value = this.get('inputOptions').findBy('id', value);
     }
 
     return value;

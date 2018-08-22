@@ -15,11 +15,11 @@
     dropdownClass=dropdownClass
     placeholder=placeholder
     placeholderComponent="c-form-powerselect-placeholder"
-    onchange=(action "selected") as |option|}}
+    onchange=(action "selected") as |item|}}
       {{#if hasBlock}}
-        {{yield option}}
+        {{yield item}}
       {{else}}
-        {{option}}
+        {{item}}
       {{/if}}
   {{/power-select-multiple}}
 
@@ -36,11 +36,11 @@
     dropdownClass=dropdownClass
     placeholder=placeholder
     placeholderComponent="c-form-powerselect-placeholder"
-    onchange=(action "selected") as |option|}}
+    onchange=(action "selected") as |item|}}
       {{#if hasBlock}}
-        {{yield option}}
+        {{yield item}}
       {{else}}
-        {{option}}
+        {{item}}
       {{/if}}
   {{/power-select}}
 

@@ -11,7 +11,7 @@ import Ember from 'ember';
 import FieldMixin from './c-form-field-mixin';
 
 export default Ember.Component.extend(FieldMixin, {
-  filedType  : 'input-select',
+  fieldType  : 'input-select',
 
   options : Ember.computed('model.${field}', function() {
     //If select options is another like ID and VALUE.

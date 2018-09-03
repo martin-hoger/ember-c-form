@@ -8,12 +8,14 @@
   options=options
   allowClear=allowClear
   placeholder=placeholder
+  verticalPosition=verticalPosition
+  dropdownClass=dropdownClass
   search=(action "search")
-  onchange=(action "selected") as |option|}}
+  onchange=(action "selected") as |item|}}
     {{#if hasBlock}}
-      {{yield option}}
+      {{yield item}}
     {{else}}
-      {{option}}
+      {{item}}
     {{/if}}
 {{/power-select}}
 

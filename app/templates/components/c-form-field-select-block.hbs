@@ -1,0 +1,20 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{#each modifiedOptions as |option|}}
+  <div onclick={{action "selectOption" option}} class="select-block-option {{option.selected}}">
+    {{yield option}}
+  </div>
+{{/each}}
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+    {{error}}
+  </div>
+{{/if}}
+

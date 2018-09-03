@@ -5,7 +5,7 @@ import FieldMixin from './c-form-field-mixin';
 export default Ember.Component.extend(FieldMixin, {
   i18n       : null,
   session    : Ember.inject.service('session'),
-  filedType  : 'input-date',
+  fieldType  : 'input-date',
 
   //Observer of user language.
   language : Ember.observer('session.user.language', function() {

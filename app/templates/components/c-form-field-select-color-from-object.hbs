@@ -1,0 +1,14 @@
+{{#c-form-field-select
+  label=label
+  model=model
+  field=field
+  required=required
+  description=description
+  class="form-field-select-color-from-object"
+  allowClear=allowClear
+  placeholder=placeholder
+  options=options
+  as |type|
+}}
+   {{c-form-color-line color=type.value}}
+{{/c-form-field-select}}

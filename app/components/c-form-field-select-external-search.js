@@ -37,7 +37,7 @@ import FieldMixin from './c-form-field-mixin';
 
 */
 export default Ember.Component.extend(FieldMixin, {
-  filedType   : 'select',
+  fieldType   : 'select',
 
   init() {
     this._super(...arguments);

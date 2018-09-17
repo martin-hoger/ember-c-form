@@ -1,0 +1,40 @@
+
+{{yield}}
+
+{{!-- loading=row.isSaving --}}
+{{!-- disabled=(unless row.validations.isValid true) --}}
+{{c-form-button
+  icon="folder open"
+  click=(action (toggle "listOpen" this))
+  label="Load"
+}}
+
+{{!-- <div class="feedback-form-open" onclick={{action (toggle "isExpanded" this)}}></div> --}}
+
+{{!-- disabled=(unless row.validations.isValid true) --}}
+{{!-- loading=row.isSaving --}}
+{{c-form-button
+  icon="save"
+  click=(action "save")
+  label="Save"
+  disabled=saveDisabled
+}}
+
+{{#if listOpen}}
+  <div class="template-box-content">
+    {{#if templates.length}}
+      {{#each templates as |template|}}
+        <div class="row">
+          <span class="text" onclick={{action (action "loadTemplate" template)}}>{{template}} </span>
+          <i class="delete-icon trash icon" {{action (action "deleteTemplate" template)}}></i>
+        </div>
+      {{/each}}
+    {{else}}
+      No templates
+    {{/if}}
+  </div>
+{{/if}}
+
+{{log templates}}
+
+{{log "title v comp" title}}

@@ -1,7 +1,14 @@
 /*
+  Template list for the textarea
+  ==============================
 
   Usage in .hbs:
-
+  {{#c-form-template-box model=this field="title"}}
+       {{c-form-field-input-textarea
+         model=this
+         field="title"
+       }}
+  {{/c-form-template-box}}
 
 */
 
@@ -40,26 +47,25 @@ export default Component.extend({
 
   },
 
-  // setText(text) {
-  //   var fieldName = this.get('field');
-  //   var model = this.get('model');
-  //   var text = model.get(fieldName);
-  //     console.log('setText', text);
-  //     this.get('model').set(fieldName, text);
-  // },
-  //
-  // appendText(text) {
-  //
-  // },
+  setText(newText) {
+    var fieldName = this.get('field');
+    this.get('model').set(fieldName, newText);
+  },
 
+  appendText(template) {
+    var fieldName = this.get('field');
+    var model = this.get('model');
+    var text = model.get(fieldName);  // text already written in textarea
+    this.get('model').set(fieldName, text + ' ' + template);
+  },
+
+  // Working with keyboard:
   keyDown(event) {
     console.log(event.keyCode);
     console.log(event.ctrlKey);
-    console.log('searchTemplate', this.get('searchTemplate'));
 
     // Ctrl + P : open the template list and focus the input
     if (event.ctrlKey == true && event.keyCode == 80) {
-      console.log('spuštěno Ctrl+P, focus!');
       this.set('listOpen', true);
       // wait until render finished, then focus input
       scheduleOnce('afterRender', this, function() {
@@ -68,16 +74,13 @@ export default Component.extend({
       return false;
     }
 
-    // user wrote something and pressed ENTER => put/append first matching template to the textarea
+    // user wrote something and pressed ENTER => set/append first matching template to the textarea
     if (this.get('searchTemplate') && event.keyCode == 13) {
       var fistFoundTemplate = this.get('rowsFiltered')[0];
-      var model = this.get('model');
-      var fieldName = this.get('field');
-      var text = model.get(fieldName);
       if (event.ctrlKey == true) {   // Ctrl + Enter = append template
-        this.get('model').set(fieldName, text + ' ' + fistFoundTemplate);
-      } else {                       // Enter = put template
-        this.get('model').set(fieldName, fistFoundTemplate);
+        this.appendText(fistFoundTemplate);
+      } else {                       // Enter = set template
+        this.setText(fistFoundTemplate);
       }
     }
 
@@ -99,6 +102,7 @@ export default Component.extend({
   }),
 
   actions: {
+
     // Save button clicked
     save() {
       var templates = this.get('templates');
@@ -107,7 +111,6 @@ export default Component.extend({
       var text = model.get(fieldName);
       // Text not empty and not same as already saved? Then save.
       if (text && !templates.includes(text)) {
-        console.log('save ', text);
         templates.pushObject(text);
         // open the list of templates after save, if closed
         if (!this.get('listOpen')) {
@@ -116,21 +119,16 @@ export default Component.extend({
       }
     },
 
-    // Template row click -> put template to the text area or add template to actual text
+    // Template row click -> put template to the text area or append template to actual text
     applyTemplate(template, event) {
-      var fieldName = this.get('field');
-      var model = this.get('model');
-      var text = model.get(fieldName);
-      if (event.ctrlKey == true) {
-        // Ctlr button pressed => add template to actual text
-        console.log('CTRL, přidat k textu', text + ' ' + template);
-        this.get('model').set(fieldName, text + ' ' + template);
-      } else {
-        // without Ctrl => put template to the textarea
-        this.get('model').set(fieldName, template);
+      if (event.ctrlKey == true) {  // click + Ctrl = append template
+        this.appendText(template);
+      } else {                      // only click = set template
+        this.setText(template);
       }
     },
 
+    // Delete icon clicked
     deleteTemplate(text) {
       var templates = this.get('templates');
       templates.removeObject(text);

@@ -3,14 +3,12 @@
 
 {{c-form-button
   icon="folder open"
-  click=(action (toggle "listOpen" this))
-  label="Load"
+  click=(action "open")
 }}
 
 {{c-form-button
   icon="save"
   click=(action "save")
-  label="Save"
   disabled=saveDisabled
 }}
 
@@ -19,18 +17,16 @@
   <div class="template-box-content">
     {{#if templates.length}}
 
-      {{input placeholder="search template" value=searchTemplate}}
-      {{!-- Filtered templates: --}}
+      <div class="field ui icon input">
+        {{input value=searchTemplate}}
+        <i class="orange inverted circular search icon"></i>
+      </div>
       {{#each rowsFiltered as |template|}}
         <div class="row" onclick={{action (action "applyTemplate" template)}}>
           <span class="text">{{template}} </span>
-          <i class="delete-icon trash icon" {{action (action "deleteTemplate" template)}}></i>
+          <i class="delete-icon trash link icon" {{action (action "deleteTemplate" template)}}></i>
         </div>
       {{/each}}
-
-      <div class="help">
-        Help: Press Ctrl key to append the text at the end of the current text.
-      </div>
 
     {{else}}
       No templates

@@ -52,18 +52,22 @@ export default Component.extend({
     this.get('model').set(fieldName, newText);
   },
 
+  // Put selected template or append to existing text in textarea
   appendText(template) {
     var fieldName = this.get('field');
     var model = this.get('model');
-    var text = model.get(fieldName);  // text already written in textarea
-    this.get('model').set(fieldName, text + ' ' + template);
+    var text = model.get(fieldName);  // text already written in textarea?
+    if (text) {
+      this.get('model').set(fieldName, text + ' ' + template);  // append with space
+    } else {
+      this.get('model').set(fieldName, template);  // set
+    }
   },
 
   // Working with keyboard:
   keyDown(event) {
-    console.log(event.keyCode);
-    console.log(event.ctrlKey);
-
+    // console.log(event.keyCode);
+    // console.log(event.ctrlKey);
     // Ctrl + P : open the template list and focus the input
     if (event.ctrlKey == true && event.keyCode == 80) {
       this.set('listOpen', true);
@@ -74,14 +78,11 @@ export default Component.extend({
       return false;
     }
 
-    // user wrote something and pressed ENTER => set/append first matching template to the textarea
+    // user wrote to "search" and pressed ENTER => set/append first matching template to the textarea
     if (this.get('searchTemplate') && event.keyCode == 13) {
       var fistFoundTemplate = this.get('rowsFiltered')[0];
-      if (event.ctrlKey == true) {   // Ctrl + Enter = append template
-        this.appendText(fistFoundTemplate);
-      } else {                       // Enter = set template
-        this.setText(fistFoundTemplate);
-      }
+      this.appendText(fistFoundTemplate);
+      this.set('searchTemplate', '');  // clear search input
     }
 
   },
@@ -103,12 +104,19 @@ export default Component.extend({
 
   actions: {
 
+    // Open button clicked -> open / close the template list and clear the search input
+    open() {
+      this.toggleProperty('listOpen');
+      this.set('searchTemplate', '');
+    },
+
     // Save button clicked
     save() {
       var templates = this.get('templates');
       var fieldName = this.get('field');
       var model = this.get('model');
       var text = model.get(fieldName);
+      text = text.trim();  // Remove whitespace
       // Text not empty and not same as already saved? Then save.
       if (text && !templates.includes(text)) {
         templates.pushObject(text);
@@ -120,12 +128,8 @@ export default Component.extend({
     },
 
     // Template row click -> put template to the text area or append template to actual text
-    applyTemplate(template, event) {
-      if (event.ctrlKey == true) {  // click + Ctrl = append template
-        this.appendText(template);
-      } else {                      // only click = set template
-        this.setText(template);
-      }
+    applyTemplate(template) {
+      this.appendText(template);
     },
 
     // Delete icon clicked

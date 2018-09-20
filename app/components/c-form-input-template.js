@@ -17,15 +17,19 @@ import { computed } from '@ember/object';
 import { defineProperty } from '@ember/object';
 import { convertAccentedCharacters } from 'ember-c-base-pack/helpers/convert-accented-characters';
 import { scheduleOnce } from '@ember/runloop';
+import { inject } from '@ember/service';
 
 export default Component.extend({
 
-  classNames: ['template-box'],
+  store : inject(),
+
+  classNames: ['input-template'],
   // templates : [
   //   'aaa', 'abc', 'bbbbbb', 'cccc'
   // ],
 
-  templates: [],
+  templates: null,
+  hasFocus : false,
 
   init() {
     this._super(...arguments);
@@ -49,6 +53,27 @@ export default Component.extend({
 
   },
 
+  focusIn() {
+    this.set('hasFocus', true);
+    console.log('focusIn hasFocus', this.get('hasFocus'));
+  },
+
+  focusOut() {
+    // this.set('hasFocus', false);
+    console.log('focusOut hasFocus', this.get('hasFocus'));
+  },
+
+  mouseEnter() {
+    this.set('hasFocus', true);
+    console.log('mouseEnter hasFocus', this.get('hasFocus'));
+  },
+
+  mouseLeave() {
+    this.set('hasFocus', false);
+    console.log('mouseLeave hasFocus', this.get('hasFocus'));
+  },
+
+
   setText(newText) {
     var fieldName = this.get('field');
     this.get('model').set(fieldName, newText);
@@ -60,18 +85,21 @@ export default Component.extend({
     var model = this.get('model');
     var text = model.get(fieldName);  // text already written in textarea?
     if (text) {
-      this.get('model').set(fieldName, text + ' ' + template);  // append with space
+      this.get('model').set(fieldName, text + ' ' + template.get('text'));  // append with space
     } else {
-      this.get('model').set(fieldName, template);  // set
+      this.get('model').set(fieldName, template.get('text'));  // set
     }
   },
 
   loadTemplates() {
     var templates = this.get('store').peekAll('input-template');
+    // debugger;
     templates = templates.filter((template) => {
-      return template.get('key') ==  this.get('key');
+      // return template.get('templateKey') ==  this.get('key');
+      return true;
     });
     this.set('templates', templates);
+    console.log('temp: ', templates);
    // this.set("templates", peakAll('input-template').filtr podle key)
   },
 
@@ -84,7 +112,7 @@ export default Component.extend({
       this.set('listOpen', true);
       // wait until render finished, then focus input
       scheduleOnce('afterRender', this, function() {
-        this.$().find('.template-box-content input').focus().select();
+        this.$().find('.input-template-window input').focus().select();
       });
       return false;
     }
@@ -130,13 +158,25 @@ export default Component.extend({
       var text = model.get(fieldName);
       text = text.trim();  // Remove whitespace
       // Text not empty and not same as already saved? Then save.
-      if (text && !templates.includes(text)) {
-        templates.pushObject(text);
+      // if (text && !templates.get('text').includes(text)) {
+      if (text) {
+        // templates.pushObject(text);
+        var newTemplate = this.get('store').createRecord('input-template', {
+          templateKey: this.get('key'),
+          text       : text
+        });
+        // templates.pushObject(newTemplate);
+        newTemplate.save();
+        // templates.save();
+        this.loadTemplates();
+        console.log('saved temp', templates);
         // open the list of templates after save, if closed
         if (!this.get('listOpen')) {
           this.set('listOpen', true);
         }
       }
+
+
     },
 
     // Template row click -> put template to the text area or append template to actual text
@@ -145,9 +185,11 @@ export default Component.extend({
     },
 
     // Delete icon clicked
-    deleteTemplate(text) {
+    deleteTemplate(template) {
+      console.log('deleteTemplate', template);
       var templates = this.get('templates');
-      templates.removeObject(text);
+      templates.removeObject(template);
+      this.loadTemplates();
     }
 
   }

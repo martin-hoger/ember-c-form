@@ -1,0 +1,43 @@
+{{!-- here is the text area: --}}
+
+{{yield}}
+
+{{#if hasFocus}}
+
+  <div class="input-template-content">
+  {{c-form-button
+    icon="folder open"
+    click=(action "open")
+  }}
+
+  {{c-form-button
+    icon="save"
+    click=(action "save")
+    disabled=saveDisabled
+  }}
+
+  {{!-- List of templates. Open / close the list (and other functions) --}}
+  {{#if listOpen}}
+    <div class="input-template-window">
+      {{#if templates.length}}
+
+        <div class="field ui icon input">
+          {{input value=searchTemplate}}
+          <i class="orange inverted circular search icon"></i>
+        </div>
+        {{#each rowsFiltered as |template|}}
+          <div class="row" onclick={{action (action "applyTemplate" template)}}>
+            <span class="text">{{template.text}} </span>
+            <i class="delete-icon trash link icon" {{action (action "deleteTemplate" template)}}></i>
+          </div>
+        {{/each}}
+
+      {{else}}
+        No templates
+      {{/if}}
+    </div>
+  {{/if}}
+
+  </div>
+
+{{/if}}

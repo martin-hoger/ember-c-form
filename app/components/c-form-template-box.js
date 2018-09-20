@@ -21,9 +21,11 @@ import { scheduleOnce } from '@ember/runloop';
 export default Component.extend({
 
   classNames: ['template-box'],
-  templates : [
-    'aaa', 'abc', 'bbbbbb', 'cccc'
-  ],
+  // templates : [
+  //   'aaa', 'abc', 'bbbbbb', 'cccc'
+  // ],
+
+  templates: [],
 
   init() {
     this._super(...arguments);
@@ -62,6 +64,15 @@ export default Component.extend({
     } else {
       this.get('model').set(fieldName, template);  // set
     }
+  },
+
+  loadTemplates() {
+    var templates = this.get('store').peekAll('input-template');
+    templates = templates.filter((template) => {
+      return template.get('key') ==  this.get('key');
+    });
+    this.set('templates', templates);
+   // this.set("templates", peakAll('input-template').filtr podle key)
   },
 
   // Working with keyboard:
@@ -108,6 +119,7 @@ export default Component.extend({
     open() {
       this.toggleProperty('listOpen');
       this.set('searchTemplate', '');
+      this.loadTemplates();
     },
 
     // Save button clicked

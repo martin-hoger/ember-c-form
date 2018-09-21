@@ -1,5 +1,4 @@
 {{!-- here is the text area: --}}
-
 {{yield}}
 
 {{#if hasFocus}}
@@ -26,9 +25,9 @@
           <i class="orange inverted circular search icon"></i>
         </div>
         {{#each rowsFiltered as |template|}}
-          <div class="row" onclick={{action (action "applyTemplate" template)}}>
+          <div class="row" {{action "applyTemplate" template}}>
             <span class="text">{{template.text}} </span>
-            <i class="delete-icon trash link icon" {{action (action "deleteTemplate" template)}}></i>
+            <i class="delete-icon link trash alternate outline icon" {{action "deleteTemplate" template bubbles=false}}></i>
           </div>
         {{/each}}
 

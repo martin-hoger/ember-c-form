@@ -1,14 +1,18 @@
 /*
   Template list for the textarea
   ==============================
+  - shows load/save buttons and other content only when mouse is over the component
+  - checks, if written text is already in the templates. If so, disables "save" button
+  - Ctrl + P opens templates list and focuses the search input
+  ...
 
   Usage in .hbs:
-  {{#c-form-template-box model=this field="title"}}
+  {{#c-form-input-template model=this field="title" key="test"}}
        {{c-form-field-input-textarea
          model=this
          field="title"
        }}
-  {{/c-form-template-box}}
+  {{/c-form-input-template}}
 
 */
 
@@ -24,12 +28,8 @@ export default Component.extend({
   store : inject(),
 
   classNames: ['input-template'],
-  // templates : [
-  //   'aaa', 'abc', 'bbbbbb', 'cccc'
-  // ],
-
-  templates: null,
-  hasFocus : false,
+  templates : null,
+  hasFocus  : false,
 
   init() {
     this._super(...arguments);
@@ -42,8 +42,12 @@ export default Component.extend({
         var fieldName = this.get('field');
         var model = this.get('model');
         var text = model.get(fieldName);
+        var includesText = '';
+        if (templates) {
+          includesText = templates.filterBy('text', text);
+        }
         // Text not empty and not same as already saved? Then enable save.
-        if (text && !templates.includes(text)) {
+        if (text && includesText == '') {
           return false
         } else {
           return true
@@ -53,30 +57,12 @@ export default Component.extend({
 
   },
 
-  focusIn() {
-    this.set('hasFocus', true);
-    console.log('focusIn hasFocus', this.get('hasFocus'));
-  },
-
-  focusOut() {
-    // this.set('hasFocus', false);
-    console.log('focusOut hasFocus', this.get('hasFocus'));
-  },
-
   mouseEnter() {
     this.set('hasFocus', true);
-    console.log('mouseEnter hasFocus', this.get('hasFocus'));
   },
 
   mouseLeave() {
     this.set('hasFocus', false);
-    console.log('mouseLeave hasFocus', this.get('hasFocus'));
-  },
-
-
-  setText(newText) {
-    var fieldName = this.get('field');
-    this.get('model').set(fieldName, newText);
   },
 
   // Put selected template or append to existing text in textarea
@@ -91,16 +77,11 @@ export default Component.extend({
     }
   },
 
+  // Load templates, only with the same key as here.
   loadTemplates() {
     var templates = this.get('store').peekAll('input-template');
-    // debugger;
-    templates = templates.filter((template) => {
-      // return template.get('templateKey') ==  this.get('key');
-      return true;
-    });
+    templates = templates.filterBy('templateKey', this.get('key'));
     this.set('templates', templates);
-    console.log('temp: ', templates);
-   // this.set("templates", peakAll('input-template').filtr podle key)
   },
 
   // Working with keyboard:
@@ -116,7 +97,6 @@ export default Component.extend({
       });
       return false;
     }
-
     // user wrote to "search" and pressed ENTER => set/append first matching template to the textarea
     if (this.get('searchTemplate') && event.keyCode == 13) {
       var fistFoundTemplate = this.get('rowsFiltered')[0];
@@ -126,8 +106,8 @@ export default Component.extend({
 
   },
 
-  // Filtr templates:
-  rowsFiltered: computed('searchTemplate', function() {
+  // Filtr templates when writing to search input
+  rowsFiltered: computed('templates.@each.text', 'searchTemplate', function() {
     var searchQuery = this.get('searchTemplate');
     if (searchQuery === '' || searchQuery === undefined) {
       return this.get('templates');
@@ -137,46 +117,50 @@ export default Component.extend({
     var regExPattern   = '\\b.*' + searchQuery + '.*\\b';
     var regexp         = new RegExp(regExPattern,'gi');
     return this.get('templates').filter(function(row){
-      return row.match(regexp);
+      return row.get('text').match(regexp);
     });
   }),
 
   actions: {
 
-    // Open button clicked -> open / close the template list and clear the search input
+    // Open button clicked -> open / close the template list
+    // if opened, load templates, clear the search input and focus it
     open() {
       this.toggleProperty('listOpen');
-      this.set('searchTemplate', '');
-      this.loadTemplates();
+      if (this.get('listOpen')) {
+        this.set('searchTemplate', '');
+        this.loadTemplates();
+        scheduleOnce('afterRender', this, function() {
+          this.$().find('.input-template-window input').focus().select();
+        });
+      }
     },
 
     // Save button clicked
     save() {
+      this.loadTemplates();
       var templates = this.get('templates');
       var fieldName = this.get('field');
       var model = this.get('model');
       var text = model.get(fieldName);
       text = text.trim();  // Remove whitespace
+      // open the list of templates, if closed
+      if (!this.get('listOpen')) {
+        this.set('listOpen', true);
+      }
       // Text not empty and not same as already saved? Then save.
-      // if (text && !templates.get('text').includes(text)) {
-      if (text) {
-        // templates.pushObject(text);
+      var includesText = '';
+      if (templates) {
+        includesText = templates.filterBy('text', text);
+      }
+      if (text && includesText == '') {
         var newTemplate = this.get('store').createRecord('input-template', {
           templateKey: this.get('key'),
           text       : text
         });
-        // templates.pushObject(newTemplate);
         newTemplate.save();
-        // templates.save();
         this.loadTemplates();
-        console.log('saved temp', templates);
-        // open the list of templates after save, if closed
-        if (!this.get('listOpen')) {
-          this.set('listOpen', true);
-        }
       }
-
-
     },
 
     // Template row click -> put template to the text area or append template to actual text
@@ -184,12 +168,14 @@ export default Component.extend({
       this.appendText(template);
     },
 
-    // Delete icon clicked
+    // Delete icon clicked -> delete after user confirmation
     deleteTemplate(template) {
-      console.log('deleteTemplate', template);
-      var templates = this.get('templates');
-      templates.removeObject(template);
-      this.loadTemplates();
+      var confirmation = confirm('Are you sure?');
+      if (confirmation) {
+        template.deleteRecord();
+        template.save();
+        this.loadTemplates();
+      }
     }
 
   }

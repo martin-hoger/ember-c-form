@@ -7,12 +7,14 @@
   {{c-form-button
     icon="folder open"
     click=(action "open")
+    class="open-button"
   }}
 
   {{c-form-button
     icon="save"
     click=(action "save")
     disabled=saveDisabled
+    class="save-button"
   }}
 
   {{!-- List of templates. Open / close the list (and other functions) --}}

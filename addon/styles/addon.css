@@ -68,15 +68,13 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ember-power-select-clear-btn           { font-size: 24px; }
 /* This must stay without any other class before the selector,
  * as the component is display on special place in the DOM. */
-.ember-power-select-option  {line-height: 18px;font-size: 13px; padding: 5px 0 5px 13px; }
-/* ============= */
-/* Od tohoto místa */
+.ember-power-select-option                   {line-height: 18px;font-size: 13px; padding: 5px 0 5px 13px; }
 .ember-power-select-multiple-trigger         {overflow: hidden;height: 100%;white-space: nowrap;}
-.ember-power-select-multiple-option          {line-height: 27px;width: 41px !important;overflow: hidden;height: 27px;display: flex;margin-top: -6px;margin-bottom: -6px;}
-.ui.form input[type="search"].ember-power-select-trigger-multiple-input           {padding: 0;width: 40px !important;}
+.ember-power-select-multiple-option          {line-height: 27px;width: 41px !important;overflow: hidden;height: 27px;display: flex;margin: -6px 4px -6px 0; }
+.ui.form .ember-power-select-trigger-multiple-input[type="search"]           {padding: 0;width: 40px !important;}
 /* Style for not empty placeholder */
-.ui.form input:not([placeholder=""]).ember-power-select-trigger-multiple-input    { width: 100% !important; }
-/* ============ až sem pokusit se dát do lib */
+.ui.form .ember-power-select-trigger-multiple-input:not([placeholder=""])    { width: 100% !important; }
+
 .field-select.error .ember-power-select-trigger,
 .field-select.error .ember-power-select-multiple-trigger { background: #FFF6F6; border-color: #E0B4B4; color: #9F3A38; }
 

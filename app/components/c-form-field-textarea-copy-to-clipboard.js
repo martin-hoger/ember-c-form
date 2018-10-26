@@ -1,3 +1,10 @@
+/*
+{{#c-form-field-textarea-copy-to-clipboard
+  buttonText="Kopírovat do schránky"
+  icon="nameOfTheIcon"
+}}
+*/
+
 import Ember from 'ember';
 import FieldMixin from './c-form-field-mixin';
 

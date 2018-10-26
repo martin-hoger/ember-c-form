@@ -7,14 +7,14 @@ import { typeOf } from '@ember/utils';
 /**
 Usage:
 
-  {{c-form-field-select 
+  {{c-form-field-select
       label="Cenová skupina"
       model=row
       field="priceCategory"
       options=(array "M" "P-A" "P-B" "P-C" "P-D")
   }}
 
-  {{#c-form-field-select 
+  {{#c-form-field-select
       label="Autor"
       model=article
       field="user"
@@ -23,7 +23,7 @@ Usage:
     {{user.name}}
   {{/c-form-field-select}}
 
-  {{#c-form-field-select 
+  {{#c-form-field-select
       label="Autor"
       model=article
       field="user"
@@ -32,7 +32,22 @@ Usage:
   }}
     {{user.name}}
   {{/c-form-field-select}}
- 
+
+multiple=true        : possible to select multiple options
+class="short-labels" : make labels of selected options short, so more options can
+                       be displayed on one line
+  {{#c-form-field-select
+    model=session
+    placeholder="Typ nemovitosti"
+    field="adminPropertiesSelectedPropertyTypes"
+    class="short-labels"
+    allowClear=true
+    multiple=true
+    options=propertyTypes
+    as |propertyType|
+  }}
+    {{propertyType.name}}
+  {{/c-form-field-select}}
  */
 export default Component.extend(FieldMixin, {
   fieldType   : 'select',
@@ -43,12 +58,12 @@ export default Component.extend(FieldMixin, {
     this._super(...arguments);
 
     // Variable "selected" (passed to power select) is computed property.
-    // 
+    //
     // Define computed property dynamically.
     // It is not possible to define computed property with variable in it.
     //     It is not possible to make:
     //     Ember.computed('model.' + this.get('field')
-    defineProperty(this, 'selected', 
+    defineProperty(this, 'selected',
       computed('model.' + this.get('field'), function() {
         var value = this.get('model.' + this.get('field'));
         return this.convertSelected(value);
@@ -96,8 +111,8 @@ export default Component.extend(FieldMixin, {
       options = [];
       for (var key in tmpOptions) {
         options.push({'id': key, 'value': tmpOptions[key]});
-      } 
-    } 
+      }
+    }
 
     return options;
   },

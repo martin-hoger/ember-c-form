@@ -1,8 +1,14 @@
 /*
-{{#c-form-field-textarea-copy-to-clipboard
-  buttonText="Kopírovat do schránky"
-  icon="nameOfTheIcon"
-}}
+Creates a text area and copy-to-clipboard button
+
+Usage:
+  {{c-form-field-textarea-copy-to-clipboard
+    buttonText="Kopírovat do chránky"
+    icon="nameOfTheIcon"
+    model=this
+    field=stringVariableToShowAndCopyInTextarea
+    class="your-special-class"
+  }}
 */
 
 import Ember from 'ember';
@@ -17,10 +23,8 @@ export default Ember.Component.extend(FieldMixin, {
   actions: {
 
     copy() {
-      console.log('stisknuto copy');
       var textarea = this.$().find('textarea').select();
       document.execCommand('copy');
-      console.log(textarea);
     }
 
   },

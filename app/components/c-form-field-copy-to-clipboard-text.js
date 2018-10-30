@@ -2,7 +2,7 @@
 Creates a text area and copy-to-clipboard button
 
 Usage:
-  {{c-form-field-textarea-copy-to-clipboard
+  {{c-form-field-copy-to-clipboard-text
     buttonText="Kopírovat do chránky"
     icon="nameOfTheIcon"
     model=this

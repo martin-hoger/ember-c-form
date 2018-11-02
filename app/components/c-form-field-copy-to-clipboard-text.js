@@ -15,8 +15,8 @@ import Ember from 'ember';
 import FieldMixin from './c-form-field-mixin';
 
 export default Ember.Component.extend(FieldMixin, {
-  icon       : 'copy',
-  buttonText : 'Copy to clipboard',
+  icon       : 'copy',              // predefined icon
+  buttonText : 'Copy to clipboard', // predefined text, if no buttonText passed
   fieldType  : 'input-textarea',
   classNames : ['textarea-copy-to-clipboard'],
 

@@ -3,10 +3,18 @@ import FieldMixin from './c-form-field-mixin';
 import { defineProperty } from '@ember/object';
 import { computed } from '@ember/object';
 
+/*
+Usage: (onChange - fire external action)
+  {{c-form-field-input-checkbox
+    model=this
+    field=selected
+    onChange=(action "select")
+  }}
+*/
 export default Component.extend(FieldMixin, {
   fieldType  : 'input-checkbox',
-  valueOn    : 1, 
-  valueOff   : 0, 
+  valueOn    : 1,
+  valueOff   : 0,
 
   init() {
     this._super(...arguments);
@@ -35,6 +43,3 @@ export default Component.extend(FieldMixin, {
   }
 
 });
-
-
-

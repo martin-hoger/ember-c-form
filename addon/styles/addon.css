@@ -59,14 +59,23 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* .form.small .ember-power-select-trigger {height: 35px;line-height: 34px;} */
 /* .form.small .ember-power-select-multiple-option { line-height: 27px; } */
 
-.ember-power-select-trigger-multiple-input { border: 0px !important; outline-offset: 0px; width: 150px !important; padding-left: 5px !important; box-sizing: border-box; }
+.ember-power-select-trigger-multiple-input { border: 0px !important; outline-offset: 0px; width: 150px !important; padding-left: 0 !important; box-sizing: border-box; }
 /* .form .ember-power-select-selected-item, */
 /* .form .ember-power-select-placeholder   { margin: 0 1em; } */
+.ember-power-select-selected-item,
+.ember-power-select-placeholder         { margin-left: 0; }
 .ember-power-select-placeholder         { color: #c1c1c1;  }
 .ember-power-select-clear-btn           { font-size: 24px; }
 /* This must stay without any other class before the selector,
  * as the component is display on special place in the DOM. */
-.ember-power-select-option  {line-height: 18px;font-size: 13px; padding: 5px 0 5px 13px; }
+.ember-power-select-option                        {line-height: 18px;font-size: 13px; padding: 5px 0 5px 13px; }
+.ember-power-select-multiple-trigger              {overflow: hidden;height: 100%;white-space: nowrap;}
+.ember-power-select-multiple-option               {line-height: 27px;overflow: hidden;height: 27px;display: flex;margin: -6px 4px -6px 0; }
+.short-labels .ember-power-select-multiple-option {width: 41px !important; }
+
+.ui.form .ember-power-select-trigger-multiple-input[type="search"]           {padding: 0;width: 40px !important;}
+/* Style for not empty placeholder */
+.ui.form .ember-power-select-trigger-multiple-input:not([placeholder=""])    { width: 100% !important; }
 
 .field-select.error .ember-power-select-trigger,
 .field-select.error .ember-power-select-multiple-trigger { background: #FFF6F6; border-color: #E0B4B4; color: #9F3A38; }
@@ -125,3 +134,9 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .input-template-window .delete-icon       { float: right; width: 20px; height: 18px; }
 .input-template-window .delete-icon:hover { background-color: #bababa; }
 .input-template-window .row:hover         { background-color: #f5f5f5; }
+
+/* c-form-field-copy-to-clipboard-text */
+.copy-to-clipboard-button.ui.button       { margin: 7px 0 30px 0; }
+
+/* c-form-field-copy-to-clipboard-html */
+#copy-to-clipboard-html-tables            { width: 100%; padding: 0.78571429em 1em; border: 1px solid rgba(34, 36, 38, 0.15); border-radius: 0.28571429rem; min-height: 250px; max-height:500px; margin: 20px 0 20px 0; overflow: hidden; overflow-y: scroll; }

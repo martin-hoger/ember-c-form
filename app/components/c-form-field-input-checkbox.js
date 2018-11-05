@@ -1,28 +1,35 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 import FieldMixin from './c-form-field-mixin';
+import { defineProperty } from '@ember/object';
+import { computed } from '@ember/object';
 
-export default Ember.Component.extend(FieldMixin, {
+export default Component.extend(FieldMixin, {
   fieldType  : 'input-checkbox',
   valueOn    : 1, 
   valueOff   : 0, 
 
-  //If checked set proper icon.
-  isChecked : Ember.computed('model', function () {
-    let value = this.get('model.' + this.get('field'));
-    return !(value === false || value === undefined || value === null | value === 0 || value === '0' || value === '' || value === this.get('valueOff')); 
-  }),
+  init() {
+    this._super(...arguments);
 
-  value: Ember.computed('isChecked', function () {
-    return this.get('isChecked') ? this.get("valueOn") : this.get("valueOff");
-  }),
+    // Define computed property dynamically.
+    // It is not possible to define computed property with variable in it.
+    //     It is not possible to make:
+    //     Ember.computed('model.' + this.get('field')
+    defineProperty(this, 'isChecked', computed('model.' + this.get('field'), 'field', function() {
+        var value = this.get('model.' + this.get('field'));
+        return !(value === false || value === undefined || value === null | value === 0 || value === '0' || value === '' || value === this.get('valueOff')); 
+      })
+    );
+  },
 
   actions: {
     toggle: function() {
-      this.set('isChecked', !this.get('isChecked'));
-      this.set('model.' + this.get('field'), this.get("value"));
+      var isChecked = this.get('isChecked');
+      var newValue  = isChecked ? this.get('valueOff') : this.get('valueOn');
+      this.set('model.' + this.get('field'), newValue);
       // Fire external action passed to this component.
-      if (this.get("onChange")) {
-        this.attrs.onChange(this.get("value"));
+      if (this.get('onChange')) {
+        this.get('onChange')(newValue);
       }
     },
   }

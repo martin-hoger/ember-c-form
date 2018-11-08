@@ -106,7 +106,7 @@ export default Component.extend({
 
   },
 
-  // Filtr templates when writing to search input
+  // Filtr templates when writing to search input - without special characters (ěščřő...)
   rowsFiltered: computed('templates.@each.text', 'searchTemplate', function() {
     var searchQuery = this.get('searchTemplate');
     if (searchQuery === '' || searchQuery === undefined) {
@@ -117,7 +117,7 @@ export default Component.extend({
     var regExPattern   = '\\b.*' + searchQuery + '.*\\b';
     var regexp         = new RegExp(regExPattern,'gi');
     return this.get('templates').filter(function(row){
-      return row.get('text').match(regexp);
+      return row.get('searchFulltext').match(regexp);
     });
   }),
 

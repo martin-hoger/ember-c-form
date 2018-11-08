@@ -10,22 +10,21 @@
     class="open-button"
   }}
 
-  {{c-form-button
-    icon="save"
-    click=(action "save")
-    disabled=saveDisabled
-    class="save-button"
-  }}
-
   {{!-- List of templates. Open / close the list (and other functions) --}}
   {{#if listOpen}}
     <div class="input-template-window">
       {{#if templates.length}}
 
-        <div class="field ui icon input">
+        <div class="field ui icon input search-template">
           {{input value=searchTemplate}}
           <i class="orange inverted circular search icon"></i>
         </div>
+        {{c-form-button
+          icon="save"
+          click=(action "save")
+          disabled=saveDisabled
+          class="save-button"
+        }}
         {{#each rowsFiltered as |template|}}
           <div class="row" {{action "applyTemplate" template}}>
             <span class="text">{{template.text}} </span>
@@ -35,6 +34,12 @@
 
       {{else}}
         No templates
+        {{c-form-button
+          icon="save"
+          click=(action "save")
+          disabled=saveDisabled
+          class="save-button-no-templates"
+        }}
       {{/if}}
     </div>
   {{/if}}

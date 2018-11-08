@@ -53,6 +53,7 @@ export default Component.extend(FieldMixin, {
   fieldType   : 'select',
   searchField : null,
   multiple    : false,
+  closeOnSelect : true,
 
   init() {
     this._super(...arguments);

@@ -1,6 +1,7 @@
 /*
   Table of the property for copying to email as HTML. One property is one table.
   This is the table (and row) component.
+  Property picture and title includes a HTML link of property.
 
   Usage:
   {{#c-form-field-copy-to-clipboard-html
@@ -24,6 +25,13 @@ export default Component.extend({
   separator: computed('property', function() {
     var str = '<span style="color: gray"> / </span>';
     return htmlSafe(str);
+  }),
+
+  // Generate property link like: https://www.luxusni-bydleni-praha.com/node/17294
+  link: computed('property', function() {
+    var domainUrl = window.location.protocol + '//' + window.location.host;
+    var link = domainUrl + '/node/' + this.get('property.id');
+    return htmlSafe(link);
   }),
 
 });

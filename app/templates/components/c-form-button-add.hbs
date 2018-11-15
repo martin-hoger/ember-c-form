@@ -1,5 +1,5 @@
 {{#if expanded}}
-  {{input type="text" value=value placeholder=placeholder enter="submit"}}
+  {{input type="text" value=value placeholder=placeholder enter=(action "submit")}}
 {{/if}}
 <button class="ui {{color}} {{class}} button" {{action "submit"}}>
   <i class="{{icon}} icon"></i>

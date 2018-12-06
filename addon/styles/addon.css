@@ -65,7 +65,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ember-power-select-selected-item,
 .ember-power-select-placeholder         { margin-left: 0; }
 .ember-power-select-placeholder         { color: #c1c1c1;  }
-.ember-power-select-clear-btn           { font-size: 24px; }
+.ember-power-select-clear-btn           { font-size: 24px; right: 25px; top: 50%; height: 14px; margin-top: -6px; }
 /* This must stay without any other class before the selector,
  * as the component is display on special place in the DOM. */
 .ember-power-select-option                        {line-height: 18px;font-size: 13px; padding: 5px 0 5px 13px; }

@@ -109,8 +109,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .x-toggle-component                 { margin-left: -4px; justify-content: left; }
 .x-toggle-container.small           { width: 62px; }
 .x-toggle-flip.small                { height: 20px; }
-.x-toggle-flip.x-toggle-btn::before { background: #AE95A7 url(../ember-c-form/form-cross.svg?new) no-repeat 21px 4px !important; background-size: 12px !important; color: transparent; }
-.x-toggle-flip.x-toggle-btn::after  { background: #AA1982 url(../ember-c-form/form-check.svg?new) no-repeat 19px 1px !important; background-size: 17px !important; color: transparent; }
+.x-toggle-flip.x-toggle-btn::before { background: #AE95A7 url(../ember-c-form/form-cross.svg?new) no-repeat 50% 50% !important; background-size: 12px !important; color: transparent; }
+.x-toggle-flip.x-toggle-btn::after  { background: #AA1982 url(../ember-c-form/form-check.svg?new) no-repeat 50% 50% !important; background-size: 17px !important; color: transparent; }
 
 .x-toggle-container { padding: 0; }
 .x-toggle-component { display: flex; justify-content: left; align-items: left; }

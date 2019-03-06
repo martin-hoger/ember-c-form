@@ -35,8 +35,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ui.tabs                  { margin: 0 0 30px !important; }
 .ui.tabs .item            { color: #616161 !important; }
 .ui.tabs .item.active     { color: #000 !important; }
-.button.form-button       { background-color: #f2711c; color: #fff;}
-.button.form-button:hover { background-color: #d1531b; color: #fff;}
+.button.form-button       { background-color: #aaa; color: #fff;}
+.button.form-button:hover { background-color: #999; color: #fff;}
 
 .form.disabled            { pointer-events: none; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 .form.disabled .button    { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }

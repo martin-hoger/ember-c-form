@@ -1,7 +1,27 @@
-<fieldset class={{if expanded "form-fieldset" "form-fieldset-collapse"}}>
-  <legend class={{if expanded "form-fieldset-label" "form-fieldset-label-collapse"}} {{action "changeExpanding"}}>{{label}}</legend>
+<legend class="form-fieldset-label {{if expanded "form-fieldset-label-expanded" "form-fieldset-label-collapse"}}" onclick={{action "changeExpanding"}}>
+  {{label}}
   {{#if expanded}}
-    {{yield}}
+      <div class="form-fieldset-label-collapsible"><i class="minus square outline icon"></i></div>
+  {{else}}
+      <div class="form-fieldset-label-collapsible"><i class="plus square outline icon"></i></div>
   {{/if}}
-</fieldset>
 
+</legend>
+
+{{#if expanded}}
+  <div class="form-fieldset-content">
+    {{yield}}
+  </div>
+{{/if}}
+
+{{!--
+<div style="display: inline-block; width: 100%; border: 1px solid #B72A90; border-top-left-radius: 5px; border-top-right-radius: 5px; ">
+  <legend style="display: inline-block; width: 100%; padding: 8px; color: white; font-weight: bold; background-color: #B72A90; border-top-left-radius: 3px; border-top-right-radius: 3px; pointer: cursor; " onclick={{action "changeExpanding"}}>{{label}}</legend>
+</div>
+
+{{#if expanded}}
+  <div style="padding: 8px; padding-top: 20px;  border: 1px solid #B72A90; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: 0px;">
+    {{yield}}
+  </div>
+{{/if}}
+--}}

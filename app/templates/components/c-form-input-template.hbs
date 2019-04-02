@@ -1,49 +1,52 @@
 {{!-- here is the text area: --}}
 {{yield}}
 
-{{#if hasFocus}}
+<div style="input-template-wrapper">
+  {{#if hasFocus}}
 
-  <div class="input-template-content">
-  {{c-form-button
-    icon="folder open"
-    click=(action "open")
-    class="open-button"
-  }}
+    <div class="input-template-content">
+      {{c-form-button
+        icon="folder open"
+        click=(action "open")
+        class="open-button"
+      }}
 
-  {{!-- List of templates. Open / close the list (and other functions) --}}
-  {{#if listOpen}}
-    <div class="input-template-window">
-      {{#if templates.length}}
+      {{!-- List of templates. Open / close the list (and other functions) --}}
+      {{#if listOpen}}
+        <div class="input-template-window">
+          {{#if templates.length}}
 
-        <div class="field ui icon input search-template">
-          {{input value=searchTemplate}}
-          <i class="orange inverted circular search icon"></i>
+            <div class="field ui icon input search-template">
+              {{input value=searchTemplate}}
+              <i class="orange inverted circular search icon"></i>
+            </div>
+            {{c-form-button
+              icon="save"
+              click=(action "save")
+              disabled=saveDisabled
+              class="save-button"
+            }}
+            {{#each rowsFiltered as |template|}}
+              <div class="row" {{action "applyTemplate" template}}>
+                <span class="text">{{template.text}} </span>
+                <i class="delete-icon link trash alternate outline icon" {{action "deleteTemplate" template bubbles=false}}></i>
+              </div>
+            {{/each}}
+
+          {{else}}
+            No templates
+            {{c-form-button
+              icon="save"
+              click=(action "save")
+              disabled=saveDisabled
+              class="save-button-no-templates"
+            }}
+          {{/if}}
         </div>
-        {{c-form-button
-          icon="save"
-          click=(action "save")
-          disabled=saveDisabled
-          class="save-button"
-        }}
-        {{#each rowsFiltered as |template|}}
-          <div class="row" {{action "applyTemplate" template}}>
-            <span class="text">{{template.text}} </span>
-            <i class="delete-icon link trash alternate outline icon" {{action "deleteTemplate" template bubbles=false}}></i>
-          </div>
-        {{/each}}
-
-      {{else}}
-        No templates
-        {{c-form-button
-          icon="save"
-          click=(action "save")
-          disabled=saveDisabled
-          class="save-button-no-templates"
-        }}
       {{/if}}
     </div>
+
   {{/if}}
+</div>
 
-  </div>
 
-{{/if}}

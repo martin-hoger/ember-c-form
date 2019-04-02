@@ -6,6 +6,7 @@ import { typeOf } from '@ember/utils';
 
 export default Component.extend(FieldMixin, {
   idFieldName : 'id',
+  multiple    : false,
 
   modifiedOptions: computed('model.${field}', 'options.[]', function () {
     var options = [];
@@ -31,18 +32,23 @@ export default Component.extend(FieldMixin, {
         this.set('model.' + this.get('field'), []);
       }
 
-      //Check if item is already exist in array.
-      var isElementSetOn = false;
-      this.get('model.' + this.get('field')).forEach((modelOption) => {
-        if (modelOption === option.id) {
-          isElementSetOn = true;
-        }
-      });
+      if (this.get('multiple')) {
+        //Check if item is already exist in array.
+        var isElementSetOn = false;
+        this.get('model.' + this.get('field')).forEach((modelOption) => {
+          if (modelOption === option.id) {
+            isElementSetOn = true;
+          }
+        });
 
-      //Toggle value of selected item.
-      if (isElementSetOn) {
-        this.get('model.' + this.get('field')).removeObject(option.id);
+        //Toggle value of selected item.
+        if (isElementSetOn) {
+          this.get('model.' + this.get('field')).removeObject(option.id);
+        } else {
+          this.get('model.' + this.get('field')).pushObject(option.id);
+        }
       } else {
+        this.set('model.' + this.get('field'), []);
         this.get('model.' + this.get('field')).pushObject(option.id);
       }
 

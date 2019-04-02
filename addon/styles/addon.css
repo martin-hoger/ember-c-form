@@ -9,13 +9,12 @@
 .form-field-item                                { float: left; width: 300px; }
 .form-field-item-error                          { color: #FF0000; }
 .form-field-required                            { color: #FF0000; }
-.form-fieldset                                  { border: 1px solid #BBBBBB; border-radius: 6px; padding: 10px; }
-.form-fieldset-collapse                         { border-top: 1px solid #BBBBBB; border-radius: 6px; padding: 10px; margin-left: 1px; }
 
-.form-fieldset-label                            { font-size: 14px; font-weight: bold; color: #555; background: transparent url(../ember-c-form/menu-expanded.png) 4px 8px no-repeat;
-                                                  padding-left: 14px; cursor: pointer; }
-.form-fieldset-label-collapse                   { font-size: 14px; font-weight: bold; color: #555; background: transparent url(../ember-c-form/menu-collapsed.png) 4px 5px no-repeat;
-                                                  padding-left: 14px; cursor: pointer; }
+.form-fieldset-label                            { display: inline-block; width: 100%; padding: 8px; font-weight: bold; background-color: #F8F8F8; border: 1px solid #dddddd; border-top-left-radius: 4px; border-top-right-radius: 4px; cursor: pointer; }
+.form-fieldset-label-collapse                   { border: 1px solid #dddddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
+.form-fieldset-label-collapsible                { display: inline-block; float: right; width: auto; text-align: right; margin-right: 2px; }
+.form-fieldset-content                          { padding: 8px; padding-top: 20px;  border: 1px solid #dddddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top: 0px; }
+
 .form-change-input                              { margin-bottom: 10px; cursor: pointer; }
 
 button               { color: #FFF; padding: 6px 22px;  cursor: pointer; text-align: center; font-weight: bold; background-color: #888;
@@ -132,6 +131,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 /* c-form-input-template */
 .input-template                           { clear: both; position: relative; }
+.input-template-wrapper                   { clear: both; position: absolute; }
 .input-template-content                   { position: absolute; }
 .input-template-window                    { text-align: left; width: 380px; border: 1px solid #ddd; background-color: #fff; padding: 10px; margin: 5px 0px; z-index: 50; -moz-box-shadow: 2px 2px 6px #555; -webkit-box-shadow: 2px 2px 6px #555; box-shadow: 2px 2px 6px #555; font-size: 11px; }
 .input-template-window .row               { border-bottom: 1px dotted #ddd; margin: 0px 5px; cursor: pointer; clear: both; line-height: 15px; padding: 2px 0 3px; }

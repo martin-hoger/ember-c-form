@@ -166,6 +166,7 @@ export default Component.extend({
     // Template row click -> put template to the text area or append template to actual text
     applyTemplate(template) {
       this.appendText(template);
+      this.attrs.applyTemplate();
     },
 
     // Delete icon clicked -> delete after user confirmation

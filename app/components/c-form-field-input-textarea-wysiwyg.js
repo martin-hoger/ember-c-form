@@ -15,7 +15,7 @@ import FieldMixin from './c-form-field-mixin';
 export default Component.extend(FieldMixin, {
   fieldType : 'input-textarea-wysiwyg',
 
-  options : {
+  options   : {
     theme : 'snow',
     modules : {
       toolbar : [
@@ -23,9 +23,14 @@ export default Component.extend(FieldMixin, {
         ['bold', 'italic', 'underline'],
         [{'color' : []}],
         [{'list'  : 'ordered'}, {'list': 'bullet'}],
-        [{'align' : []}],
+        // [{'align' : []}],
       ]
     }
+  },
+
+  init() {
+    this._super(...arguments);                                              
+    this.set('text', this.get('model.' + this.get('field')));
   },
 
   actions: {

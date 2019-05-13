@@ -2,7 +2,7 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{quill-editor options=options value=(mut (get model field)) textChange=(action "updateText")}}
+{{quill-editor options=options value=(mut text) textChange=(action "updateText")}}
 
 {{#if description}}
   <div class="description">{{description}}</div>

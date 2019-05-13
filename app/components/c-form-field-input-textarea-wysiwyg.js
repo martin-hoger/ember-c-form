@@ -23,7 +23,6 @@ export default Component.extend(FieldMixin, {
         ['bold', 'italic', 'underline'],
         [{'color' : []}],
         [{'list'  : 'ordered'}, {'list': 'bullet'}],
-        [{'align' : []}],
       ]
     }
   },

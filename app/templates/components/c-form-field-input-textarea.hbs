@@ -4,15 +4,7 @@
 
 {{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows}}
 
-{{#if description}}
-  <div class="description">{{description}}</div>
-{{/if}}
-
-{{#if error}}
-  <div class="error-message">
-      {{error}}
-  </div>
-{{/if}}
+<i class="save icon display-notification"></i>
 
 {{#if description}}
   <div class="description">{{description}}</div>
@@ -23,3 +15,4 @@
       {{error}}
   </div>
 {{/if}}
+

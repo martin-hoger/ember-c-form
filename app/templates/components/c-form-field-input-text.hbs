@@ -12,7 +12,11 @@
   <i class="{{suffixIcon}} icon suffix-icon" {{action suffixIconAction}}></i>
 {{/if}}
 
-<i class="save icon display-notification"></i>
+{{#if (and model.hasDirtyAttributes displayNotification)}}
+  {{#transition-group transitionName="display-notification-wrapper"}}
+    <i class="save icon display-notification"></i>
+  {{/transition-group}}
+{{/if}}
 
 {{#if hasBlock}}
   {{yield}}

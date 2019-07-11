@@ -24,9 +24,17 @@ export default Ember.Component.extend(FieldMixin, {
 
   actions: {
     //Selection from date input. 
-    setDate: function(date) {
-      this.set('model.' + this.get('field'), date);
+    setDate: function(value) {
+      this.set('model.' + this.get('field'), value);
+
+      // !! NOTE !!
+      // Calling sendAction is deprecated, should be replace by closure action (see onChange).
       this.sendAction();
+
+      // Send action if it is passed.
+      if (this.get('onChange')) {
+        this.get('onChange')(value);
+      }
     }
   },
 

@@ -12,9 +12,10 @@ Usage: (onChange - fire external action)
   }}
 */
 export default Component.extend(FieldMixin, {
-  fieldType  : 'input-checkbox',
-  valueOn    : 1,
-  valueOff   : 0,
+  classNameBindings : ['inline:inline-checkbox'],
+  fieldType         : 'input-checkbox',
+  valueOn           : 1,
+  valueOff          : 0,
 
   init() {
     this._super(...arguments);

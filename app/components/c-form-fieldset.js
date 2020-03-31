@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames : "form-fieldset",
+
   click: function() {
     this.sendAction();
   },

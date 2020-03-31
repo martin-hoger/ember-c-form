@@ -2,7 +2,7 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows}}
+{{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows placeholder=placeholder}}
 
 {{#if (and model.hasDirtyAttributes displayNotification)}}
   {{#transition-group transitionName="display-notification-wrapper"}}

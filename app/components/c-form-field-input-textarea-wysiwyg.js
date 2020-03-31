@@ -19,8 +19,8 @@ export default Component.extend(FieldMixin, {
     theme : 'snow',
     modules : {
       toolbar : [
-        [{header  : [2, 3, 4, false]}],
-        ['bold', 'italic', 'underline'],
+        // [{header  : [2, 3, 4, false]}],
+        ['bold', 'italic', 'underline','strike'],
         [{'color' : []}],
         [{'list'  : 'ordered'}, {'list': 'bullet'}],
         // [{'align' : []}],

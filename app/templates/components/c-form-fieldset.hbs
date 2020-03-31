@@ -1,3 +1,7 @@
+<div class="form-fieldset-parameters">
+  {{yield to="inverse"}}
+</div>
+
 <legend class="form-fieldset-label {{if expanded "form-fieldset-label-expanded" "form-fieldset-label-collapse"}}" onclick={{action "changeExpanding"}}>
   {{label}}
   {{#if expanded}}
@@ -5,7 +9,6 @@
   {{else}}
       <div class="form-fieldset-label-collapsible"><i class="plus square outline icon"></i></div>
   {{/if}}
-
 </legend>
 
 {{#if expanded}}

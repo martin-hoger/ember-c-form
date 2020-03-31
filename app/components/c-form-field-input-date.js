@@ -6,6 +6,7 @@ export default Ember.Component.extend(FieldMixin, {
   i18n       : null,
   session    : Ember.inject.service('session'),
   fieldType  : 'input-date',
+  useUTC     : true,
 
   //Observer of user language.
   language : Ember.observer('session.user.language', function() {

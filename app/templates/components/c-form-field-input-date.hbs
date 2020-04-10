@@ -3,6 +3,9 @@
 {{/if}}
 
 {{#if pikadayInput}}
+  {{#if noMonthYearChange}}
+    <div class="field-input-date-no-month-year-change"></div>
+  {{/if}}
   {{component pikadayInput
       onSelection=(action "setDate")
       value=(mut (get model field))

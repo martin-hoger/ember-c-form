@@ -1,0 +1,83 @@
+import { moduleForComponent, test } from 'ember-qunit';
+import hbs from 'htmlbars-inline-precompile';
+
+moduleForComponent('c-form-field-select-simple-html', 'Integration | Component | c-form-field-select-simple-html', {
+  integration: true,
+});
+
+const options = [
+  { id: 1, value: 'Airplane' },
+  { id: 2, value: 'Car' },
+  { id: 3, value: 'Rocket' },
+];
+
+test('Init state - field value is empty', function(assert) {
+  // Not completely persuaded that this should be the default behavior of a select.
+  this.set('options', options);
+  this.set('model', { field : null });
+  this.render(hbs`{{c-form-field-select-simple-html model=model field="field" options=options}}`);
+  // Check all the options.
+  this.options.forEach((option, index) => {
+    assert.equal(this.$('option:eq(' + index + ')').text().trim(), option.value, 'Test option #' + index );
+  });
+  //When empty we take
+  assert.equal(this.get('model.field'), this.options[0].id, 'Set first/default value');
+});
+
+test('Init state - field value already set', function(assert) {
+  this.set('options', options);
+  this.set('model', { field : 111 });
+  this.render(hbs`{{c-form-field-select-simple-html model=model field="field" options=options}}`);
+  //When not empty we keep the value set.
+  assert.equal(this.get('model.field'), 111, 'Do not set default/first value');
+
+});
+
+test('Select an option', function(assert) {
+  this.set('options', options);
+  this.set('model', { field : null });
+  this.render(hbs`{{c-form-field-select-simple-html model=model field="field" options=options}}`);
+  //Test - change option (choose option with id = 3).
+  this.$('option:eq(2)').change();
+  assert.equal(this.get('model.field'), this.options[2].id, 'Option selected');
+});
+
+test('Select an option - fire action', function(assert) {
+  this.set('options', options);
+  this.set('model', { field : null });
+  //Test - external action.
+  this.set('externalAction', (data) => {
+    assert.equal(data, this.options[1].id, 'External event fired');
+  });
+  this.render(hbs`{{c-form-field-select-simple-html model=model field="field" options=options onSelect=(action externalAction)}}`);
+  this.$('option:eq(1)').change();
+});
+
+test('Field value is changed - change option', function(assert) {
+  this.set('options', options);
+  this.set('model', { field : this.options[1].id });
+  this.render(hbs`{{c-form-field-select-simple-html model=model field="field" options=options}}`);
+  assert.equal(this.$('select').val(), this.options[1].id, 'Default value set');
+  // Value changed, the select should follow.
+  this.set('model.field', this.options[2].id,);
+  assert.equal(this.$('select').val(), this.options[2].id, 'Value changed');
+});
+
+test('Render label', function(assert) {
+  this.set('options', options);
+  this.set('model', { field : this.options[1].id });
+  this.set('labelText', 'Test label');
+  this.render(hbs`{{c-form-field-select-simple-html label=labelText model=model field="field" options=options}}`);
+  assert.equal(this.$('label').text().trim(), this.get('labelText'), 'Label is set');
+});
+
+test('Show error message', function(assert) {
+  var errorMessage = 'Error message';
+  this.set('options', options);
+  this.set('model', { 
+    field : this.options[1].id, 
+    validations: { errors : [ { 'attribute' : 'field', 'message' : errorMessage}]}
+  });
+  this.render(hbs`{{c-form-field-select-simple-html label=labelText model=model field="field" options=options}}`);
+  assert.equal(this.$('.error-message').text().trim(), errorMessage, 'Error was shown');
+});

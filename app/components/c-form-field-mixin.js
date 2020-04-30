@@ -1,6 +1,8 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import { computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
 
-export default Ember.Mixin.create({
+export default Mixin.create({
   classNamesDefault        : ['field'],
   classNameBindingsDefault : ['fieldTypeName', 'required', 'error:error:'],
   
@@ -17,14 +19,14 @@ export default Ember.Mixin.create({
   },
 
   // Generates the full field type name for the tag class attribute.
-  fieldTypeName : Ember.computed('fieldType', function () {
+  fieldTypeName : computed('fieldType', function () {
     return 'field-' + this.get('fieldType');
   }),
 
   // Check validators to generate error message.
-  error: Ember.computed('model.validations.errors.[]', function() {
+  error: computed('model.validations.errors.[]', 'field', function() {
     var field = this.get('field');
-    if ((Ember.isPresent(field)) && (this.get('model.validations.errors'))) {
+    if (isPresent(field) && this.get('model.validations.errors')) {
       let errors = this.get('model.validations.errors').filterBy('attribute', field);
       if (errors.length > 0) {
           return errors.pop().message;

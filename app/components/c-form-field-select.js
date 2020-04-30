@@ -64,11 +64,18 @@ export default Component.extend(FieldMixin, {
     // It is not possible to define computed property with variable in it.
     //     It is not possible to make:
     //     Ember.computed('model.' + this.get('field')
-    defineProperty(this, 'selected', computed('model.' + this.get('field'), 'field', function() {
-        var value = this.get('model.' + this.get('field'));
-        return this.convertSelected(value);
-      })
-    );
+    //
+    // This property can be also defined directly on the component.
+    // In this way we can pass selected value directly from component above (for inst. c-form-select-simple).
+    //
+    if (typeof this.selected === 'undefined') {
+      var modelField = 'model.' + this.get('field');
+      defineProperty(this, 'selected', computed(modelField, modelField + '.[]', 'field', function() {
+          var value = this.get('model.' + this.get('field'));
+          return this.convertSelected(value);
+        })
+      );
+    }
 
   },
 

@@ -1,25 +1,24 @@
-{{#if label}}
-  <label>{{label}}</label>
-{{/if}}
-
-<select onChange={{action "selectChanged" value="target.value"}} disabled={{if disabled "disabled" ""}}>
-  {{#each options as |item|}}
-    <option
-        value={{item.id}}
-        selected={{eq (convert-to-string item.id) (convert-to-string (get model field))}}
-    >
-      {{item.value}}
-    </option>
-  {{/each}}
-</select>
-
-{{#if description}}
-  <div class="description">{{description}}</div>
-{{/if}}
-
-{{#if error}}
-  <div class="error-message">
-      {{error}}
-  </div>
-{{/if}}
-
+{{#c-form-field-select 
+  label=label
+  model=this
+  field="selecteObject"
+  multiple=multiple
+  disabled=disabled 
+  searchField=searchField 
+  allowClear=allowClear
+  verticalPosition=verticalPosition
+  dropdownClass=dropdownClass
+  placeholder=placeholder
+  closeOnSelect=closeOnSelect
+  description=description
+  onSelect=(action "selected")
+  selected=selected
+  options=options
+  as |item|
+}}
+    {{#if hasBlock}}
+      {{yield item}}
+    {{else}}
+      {{get item selectValue}}
+    {{/if}}
+{{/c-form-field-select}}

@@ -1,0 +1,113 @@
+import { module, moduleForComponent, test } from 'ember-qunit';
+import hbs from 'htmlbars-inline-precompile';
+import { render, click, fillIn, visit } from '@ember/test-helpers';
+import { setupApplicationTest } from 'ember-qunit';
+import { setupRenderingTest } from 'ember-qunit';
+
+moduleForComponent('c-form-input-template', 'Integration | Component | c-form-input-template', {
+  integration: true,
+});
+
+test('Integration: c-form-input-template', async function(assert) {
+
+  //Set variable, which is in the textarea and in component
+  this.set('title', 'new template');
+
+  //Render template.
+  this.render(hbs`
+  {{#c-form-input-template model=this field="title" key="test"}}
+    {{c-form-field-input-textarea
+      model=this
+      field="title"
+    }}
+  {{/c-form-input-template}}
+  `);
+
+  // debugger;
+
+  //1.It shows button open, other window after the click
+  this.$('textarea').mouseenter();
+  this.$('.open-button').click();
+  assert.equal(this.$('.input-template-window').length , 1);
+  // debugger;
+
+  //2.Read value in the textarea.
+  assert.equal(this.$('textarea').val(), 'new template');
+
+  //3.Click save button and.... look into the lemplate list, if saved
+  //================== not finished SAVING ======================!!!!!!!!!!!
+  debugger;
+  console.log(this.get('field'));
+  this.$('.save-button').click();
+
+});
+
+// // ====================
+// module('Integration :c-form-input-template WW', function(hooks) {
+//   setupApplicationTest(hooks);
+//
+//   test('should add new template', async function(assert) {
+//     //Set model.
+//     this.set('model', {
+//       constructor : {
+//         modelName : 'model'
+//       },
+//       // field : 'written',
+//     });
+//
+//     //Render template.
+//     this.render(hbs`
+//     {{#c-form-input-template model=this field="title" key="test"}}
+//       {{c-form-field-input-textarea
+//         model=this
+//         field="title"
+//       }}
+//     {{/c-form-input-template}}
+//     `);
+//
+//     this.$('div').find('textarea').val('written');  // fill the textarea
+//     await click('i.save.icon');
+//     var param = this.$('div.input-template-window');
+//     var html = param[0].outerHTML
+//     console.log('po otevření', html);
+//     // await click('button.submit');
+//     // // assert.equal(this.element.querySelector('ul.posts li').textContent, 'My new post');
+//
+//   });
+
+// ======================
+  module('Integration | c-form-input-template | click', function(hooks) {
+  // setupApplicationTest(hooks);
+  setupRenderingTest(hooks);
+
+  test('should add new template', async function(assert) {
+    //Set model.
+    // this.set('model', {
+    //   constructor : {
+    //     modelName : 'model'
+    //   },
+    //   // field : 'written',
+    // });
+
+    //Render template.
+    await render(hbs` {{c-form-field-input-textarea model=this field="title"}} `);
+    // await render(hbs`
+    // {{#c-form-input-template model=this field="title" key="test"}}
+    //   {{c-form-field-input-textarea
+    //     model=this
+    //     field="title"
+    //   }}
+    // {{/c-form-input-template}}
+    // `);
+
+    // await visit('/posts/new');
+    // await fillIn('textarea', 'new template');
+    // await click('textarea');
+    // assert.equal(this.element.querySelector('ul.posts li').textContent, 'new template');
+    // console.log('div po click', this.$('div'));
+
+  });
+});
+
+
+// });

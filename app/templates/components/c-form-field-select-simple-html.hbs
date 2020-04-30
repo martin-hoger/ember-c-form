@@ -1,0 +1,22 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+<select onChange={{action "selectChanged" value="target.value"}} disabled={{if disabled "disabled" ""}}>
+  {{#each optionsPrepared as |item|}}
+    <option value={{item.id}} selected={{item.selected}} >
+      {{item.value}}
+    </option>
+  {{/each}}
+</select>
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}
+

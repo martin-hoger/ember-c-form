@@ -1,6 +1,8 @@
 import Component from '@ember/component';
 import { defineProperty } from '@ember/object';
 import { computed } from '@ember/object';
+import { next } from '@ember/runloop';
+
 /*
  * Attributes:
  * model         - model.
@@ -19,11 +21,21 @@ export default Component.extend(FieldMixin, {
 
   init() {
     this._super(...arguments);
-    let initValue = this.get('model.' + this.get('field'));
-    if (!initValue) {
-      this.set('model.' + this.get('field'), this.get('options')[0].id);
-    }
-    
+
+
+    // We need to use this code with next because this error:
+    // Assertion Failed: You modified [property] twice in a single render.
+    next(() => {
+      if (!this.isDestroyed) {
+        if (this.get('model')) {
+          let initValue = this.get('model.' + this.get('field'));
+          if (!initValue) {
+            this.set('model.' + this.get('field'), this.get('options')[0].id);
+          }
+        }
+      }
+    });
+
     // Variable "selected" (passed to power select) is computed property.
     //
     // Define computed property dynamically.
@@ -31,14 +43,15 @@ export default Component.extend(FieldMixin, {
     //     It is not possible to make:
     //     Ember.computed('model.' + this.get('field')
     defineProperty(this, 'selected', computed('model.' + this.get('field'), 'field', function() {
+      if (this.get('model')) {
         var value = this.get('model.' + this.get('field'));
         return value;
-      })
-    );
+      }
+    }));
   },
 
-  optionsPrepared : computed('options.[]', 'selected', function() {
-    var options = [];
+  optionsPrepared : computed('options.[]', function() {
+    var options     = [];
     var selectId    = this.get('selectId');
     var selectValue = this.get('selectValue');
     this.get('options').forEach((data) => { 

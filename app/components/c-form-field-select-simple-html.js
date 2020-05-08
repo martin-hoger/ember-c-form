@@ -29,7 +29,7 @@ export default Component.extend(FieldMixin, {
       if (!this.isDestroyed) {
         if (this.get('model')) {
           let initValue = this.get('model.' + this.get('field'));
-          if (!initValue) {
+          if ((!initValue) && (initValue != 0)) {
             this.set('model.' + this.get('field'), this.get('options')[0].id);
           }
         }

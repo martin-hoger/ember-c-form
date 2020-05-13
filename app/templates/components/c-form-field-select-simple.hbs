@@ -1,7 +1,7 @@
 {{#c-form-field-select 
   label=label
   model=this
-  field="selecteObject"
+  field="selectedObject"
   multiple=multiple
   disabled=disabled 
   searchField=searchField 
@@ -13,6 +13,7 @@
   description=description
   onSelect=(action "selected")
   selected=selected
+  required=required
   options=options
   as |item|
 }}

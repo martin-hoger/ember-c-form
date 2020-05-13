@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import FieldMixin from './c-form-field-mixin';
 import { defineProperty } from '@ember/object';
 import { computed } from '@ember/object';
 import { isArray } from '@ember/array';
@@ -36,7 +37,7 @@ import { isArray } from '@ember/array';
 
 
 */
-export default Component.extend({
+export default Component.extend(FieldMixin, {
   tagName       : '',
   searchField   : null,
   multiple      : false,

@@ -9,7 +9,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { clickTrigger, selectChoose } from 'ember-power-select/test-support/helpers';
 import { setupMirage } from 'ember-cli-mirage/test-support';
 import { render, click } from '@ember/test-helpers';
-// import { pauseTest } from '@ember/test-helpers';
+import { pauseTest } from '@ember/test-helpers';
 
 import registerPowerSelectHelpers from 'ember-power-select/test-support/helpers';
 registerPowerSelectHelpers();
@@ -194,6 +194,21 @@ module('Integration | Component | c-form-field-select-simple', function(hooks) {
     await clickTrigger();
     await click('.ember-power-select-option:nth-child(1)'); // index + 1
     assert.equal(this.get('model.field')[2], optionsObjects[0].id , 'Value #0 is set on the model');
+    // await pauseTest();
+  });
+
+  test('Show error message', async function(assert) {
+    var errorMessage = 'Error message';
+    this.set('options', optionsObjects);
+    this.set('model', { field : this.options[1].id });
+    await render(hbs`{{c-form-field-select-simple label=labelText model=model field="field" options=options}}`);
+    assert.dom('.error-message').isNotVisible('Error message is not visible');
+    //Set error.
+    this.set('model.validations', { 
+      errors : [ { 'attribute' : 'field', 'message' : errorMessage}]
+    });
+    assert.dom('.error-message').isVisible('Error message is visible');
+    assert.dom('.error-message').hasText(errorMessage, 'Error message present');
     // await pauseTest();
   });
 

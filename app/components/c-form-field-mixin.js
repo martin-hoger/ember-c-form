@@ -11,11 +11,14 @@ export default Mixin.create({
 
   init() {
     this._super(...arguments);
-    // Merge classNameBindings from the component with the default params defined here.
-    var classNamesDefault = this.get('classNamesDefault');
-    var classNameBindingsDefault = this.get('classNameBindingsDefault');
-    this.set('classNames', this.get('classNames').concat(classNamesDefault));
-    this.set('classNameBindings', this.get('classNameBindings').concat(classNameBindingsDefault));
+    // If not tag-less component...
+    if (this.get('tagName')) {
+      // Merge classNameBindings from the component with the default params defined here.
+      var classNamesDefault = this.get('classNamesDefault');
+      var classNameBindingsDefault = this.get('classNameBindingsDefault');
+      this.set('classNames', this.get('classNames').concat(classNamesDefault));
+      this.set('classNameBindings', this.get('classNameBindings').concat(classNameBindingsDefault));
+    }
   },
 
   // Generates the full field type name for the tag class attribute.

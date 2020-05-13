@@ -44,13 +44,12 @@ export default Component.extend(FieldMixin, {
     //     Ember.computed('model.' + this.get('field')
     defineProperty(this, 'selected', computed('model.' + this.get('field'), 'field', function() {
       if (this.get('model')) {
-        var value = this.get('model.' + this.get('field'));
-        return value;
+        return this.get('model.' + this.get('field'));
       }
     }));
   },
 
-  optionsPrepared : computed('options.[]', function() {
+  optionsPrepared : computed('options.[]', 'selected', function() {
     var options     = [];
     var selectId    = this.get('selectId');
     var selectValue = this.get('selectValue');

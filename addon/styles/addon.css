@@ -42,10 +42,10 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.disabled .button    { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 
 /* Forms - input txt */
-.field-input-text .unit                    { position: relative; display: inline-block; float: right; right: 18px;margin-top: -27px;font-size: 1em;z-index: 1;}
-.field-input-text.suffix-icon .suffix-icon { position: absolute;right: 0;margin-top: -27px;font-size: 24px;cursor: pointer;z-index: 1;}
-.field-input-text.suffix-icon .unit        { right: 51px;}
-.field-input-text.suffix-icon              { padding-right: 40px; }
+.field-input-text .unit                    { display: inline-block; font-size: 1em;z-index: 1; position: relative; top: 7px; }
+.field-input-text .suffix-icon { font-size: 24px;cursor: pointer;z-index: 1; position: relative; top: 6px; right: -6px; }
+.field-input-text .input-text-content         { position: relative; }
+.field-input-text .input-text-content .suffix-box { position: absolute; right: 1em; top: 6px; }
 
 .display-notification-wrapper-enter                                              { opacity: 0; }
 .display-notification-wrapper-enter.display-notification-wrapper-enter-active    { opacity: 1; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; transition: all .3s ease-in-out;  }
@@ -54,8 +54,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 .field-input-text .display-notification, 
 .field-input-textarea .display-notification, 
-.field-input-textarea-wysiwyg .display-notification                              { position: absolute; display: block; float: right; right: 3px; margin-top: -35px;font-size: 1em;
-                                                                                   z-index: 2; background-color: #fff; border: 1px solid #d7d7d7; border-radius: 15px; width: 30px; height: 30px; padding-top: 4px; padding-left: 1px; color: #b13d89; }
+.field-input-textarea-wysiwyg .display-notification                              { display: block; font-size: 1em;
+                                                                                   z-index: 2; background-color: #fff; border: 1px solid #d7d7d7; border-radius: 15px; width: 30px; height: 30px; padding-top: 4px; padding-left: 1px; color: #b13d89; margin-right: -10px; }
 
 .field-input-date-no-month-year-change                                           { position: absolute; width: 135px; height: 54px; z-index: 99999; background-color: transparent; top: 0px; left: 75px; }
 

@@ -19,15 +19,15 @@ module('Integration | Component | c-form-field-select-simple', function(hooks) {
   setupMirage(hooks);
 
   const optionsObjects = [
-    { id: 1, value: 'Value #0' },
-    { id: 2, value: 'Value #1' },
-    { id: 3, value: 'Value #2' },
+    { id: 1, value: 'Airplane' },
+    { id: 2, value: 'Bus' },
+    { id: 3, value: 'Rocket' },
   ];
 
   const optionsObjects2 = [
-    { key: 1, name: 'Value #0' },
-    { key: 2, name: 'Value #1' },
-    { key: 3, name: 'Value #2' },
+    { key: 1, name: 'Airplane' },
+    { key: 2, name: 'Bus' },
+    { key: 3, name: 'Rocket' },
   ];
 
   test('Initial value - one of the options', async function(assert) {

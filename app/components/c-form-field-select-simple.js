@@ -79,7 +79,7 @@ export default Component.extend(FieldMixin, {
 
   actions: {
     // When value is selected, save it.
-    selected(result) {
+    onSelect(result) {
       var multiple   = this.get('multiple')
       var value      = multiple ? [] : null;
       var selectId = this.get('selectId');

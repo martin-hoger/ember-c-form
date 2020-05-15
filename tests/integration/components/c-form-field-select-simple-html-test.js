@@ -15,11 +15,11 @@ module('Integration | Component | c-form-field-select-simple-html', function(hoo
 
   const options = [
     { id: 1, value: 'Airplane' },
-    { id: 2, value: 'Car' },
+    { id: 2, value: 'Bus' },
     { id: 3, value: 'Rocket' },
   ];
 
-  // const optionsArray = ['Airplane', 'Car', 'Rocket'];
+  // const optionsArray = ['Airplane', 'Bus', 'Rocket'];
 
   test('Init state - field value is empty', async function(assert) {
     // Not completely persuaded that this should be the default behavior of a select.

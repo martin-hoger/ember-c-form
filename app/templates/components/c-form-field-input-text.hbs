@@ -2,25 +2,31 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{input type=type value=(mut (get model field)) min=min max=max maxlength=maxlength placeholder=placeholder disabled=(if disabled "disabled" "")}}
+<div class="input-text-content">
 
-{{#if unit}}
-  <div class="unit">{{unit}}</div>
-{{/if}}
+  {{input type=type value=(mut (get model field)) min=min max=max maxlength=maxlength placeholder=placeholder disabled=(if disabled "disabled" "")}}
 
-{{#if suffixIcon}}
-  <i class="{{suffixIcon}} icon suffix-icon" {{action suffixIconAction}}></i>
-{{/if}}
+  <div class="suffix-box">
+    {{#if unit}}
+      <div class="unit">{{unit}}</div>
+    {{/if}}
 
-{{#if (and model.hasDirtyAttributes displayNotification)}}
-  {{#transition-group transitionName="display-notification-wrapper"}}
-    <i class="save icon display-notification"></i>
-  {{/transition-group}}
-{{/if}}
+    {{#if suffixIcon}}
+        <i class="{{suffixIcon}} icon suffix-icon" {{action suffixIconAction}}></i>
+    {{/if}}
 
-{{#if hasBlock}}
-  {{yield}}
-{{/if}}
+    {{#if (or model.hasDirtyAttributes displayNotification)}}
+      {{#transition-group transitionName="display-notification-wrapper"}}
+        <i class="save icon display-notification"></i>
+      {{/transition-group}}
+    {{/if}}
+  </div>
+
+  {{#if hasBlock}}
+    {{yield}}
+  {{/if}}
+
+</div>
 
 {{#if description}}
   <div class="description">{{description}}</div>

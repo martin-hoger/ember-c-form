@@ -44,6 +44,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* Forms - input txt */
 .field-input-text .unit                    { display: inline-block; font-size: 1em;z-index: 1; position: relative; top: 7px; }
 .field-input-text .suffix-icon { font-size: 24px;cursor: pointer;z-index: 1; position: relative; top: 6px; right: -6px; }
+.form.small .field-input-text .suffix-icon { top: 2px; }
 .field-input-text .input-text-content         { position: relative; }
 .field-input-text .input-text-content .suffix-box { position: absolute; right: 1em; top: 6px; }
 

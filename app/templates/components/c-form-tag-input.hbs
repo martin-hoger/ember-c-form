@@ -1,0 +1,24 @@
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
+
+{{#power-select-multiple
+    searchEnabled=true
+    options=tagItems
+    selected=selected
+    placeholder=placeholder
+    onchange=(action "updateTagObject")
+    onkeydown=(action "createTag")
+    noMatchesMessage=noMatchesMessage
+    as |tag|
+}}
+  <span class="form-tag-input-item">
+    {{tag}} 
+  </span>
+
+  {{#if allowedTagRemove}}
+    <a onmouseup={{action "stopPropagation"}} onclick={{action "deleteTag" tag}}>
+      <i class="icon trash form-tag-input-delete"></i>
+    </a>
+  {{/if}}
+{{/power-select-multiple}}

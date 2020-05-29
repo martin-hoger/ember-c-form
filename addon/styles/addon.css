@@ -170,3 +170,21 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 /* c-form-field-copy-to-clipboard-html */
 #copy-to-clipboard-html-tables            { width: 100%; padding: 0.78571429em 1em; border: 1px solid rgba(34, 36, 38, 0.15); border-radius: 0.28571429rem; min-height: 250px; max-height:500px; margin: 20px 0 20px 0; overflow: hidden; overflow-y: scroll; }
+
+/* c-form-tag-input */
+.ui.form .ember-power-select-trigger-multiple-input[type="search"] {  }
+.ember-power-select-multiple-option                                { background-color: #e8e8e8; color: #5e5e5e; font-size: 12px; padding-right: 8px; text-transform: /* uppercase; */ lowercase;  border: 0px;}
+.ember-power-select-multiple-remove-btn                            { margin-left: 1px; margin-right: 4px; }
+
+/* c-form-tag-input */
+.ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 7px 8px 0px 8px; }
+.ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 7px 8px 0px 8px; }
+.ui.form .form-tag-input .ember-power-select-trigger i.icon                                 { display: none; }
+.ui.form .form-tag-input .ember-power-select-trigger-multiple-input[type="search"]          { padding-top: 4px; }
+.form-tag-input-item                                                                        { text-transform: lowercase; }          
+.ember-basic-dropdown-content .ember-power-select-option i.icon.form-tag-input-delete       { color: transparent; }
+.ember-basic-dropdown-content .ember-power-select-option:hover i.icon.form-tag-input-delete { color: #fff; }
+i.icon.form-tag-input-delete                                                                { position: absolute; width: auto; height: auto; display: inline-block; right: 25px; font-size: 11px; padding: 0px 3px; border-radius: 3px; border: 1px solid transparent; margin-right: 10px; }          
+i.icon.form-tag-input-delete:hover                                                          { border: 1px solid #eee; }          
+
+

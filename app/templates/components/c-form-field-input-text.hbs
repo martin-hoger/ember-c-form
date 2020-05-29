@@ -8,7 +8,7 @@
 
   <div class="suffix-box">
     {{#if unit}}
-      <div class="unit">{{unit}}</div>
+        <div class="unit {{if (get model field) "has-value" ""}}">{{unit}}</div>
     {{/if}}
 
     {{#if suffixIcon}}

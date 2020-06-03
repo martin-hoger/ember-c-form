@@ -49,7 +49,11 @@ export default Component.extend(FieldMixin, {
     }));
   },
 
-  optionsPrepared : computed('options.[]', 'selected', function() {
+
+  //Backup:
+  // optionsPrepared : computed('options.[]', 'selected', function() {
+  
+  optionsPrepared : computed('options.[]', function() {
     var options     = [];
     var selectId    = this.get('selectId');
     var selectValue = this.get('selectValue');

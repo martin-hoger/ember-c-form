@@ -177,8 +177,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ember-power-select-multiple-remove-btn                            { margin-left: 1px; margin-right: 4px; }
 
 /* c-form-tag-input */
-.ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 7px 8px 0px 8px; }
-.ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 7px 8px 0px 8px; }
+.ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 3px 8px 6px 8px; }
 .ui.form .form-tag-input .ember-power-select-trigger i.icon                                 { display: none; }
 .ui.form .form-tag-input .ember-power-select-trigger-multiple-input[type="search"]          { padding-top: 4px; }
 .form-tag-input-item                                                                        { text-transform: lowercase; }          

@@ -7,6 +7,7 @@ export default Component.extend(FieldMixin, {
   classNames       : 'form-tag-input',
   store            : inject(),
   intl             : inject(),
+  dialog           : inject(),
   allowedTagCreate : true,
   allowedTagRemove : true,
 
@@ -33,9 +34,9 @@ export default Component.extend(FieldMixin, {
     });
 
     //Load defined tags for actual object.
-    var tags       = this.get('store').peekAll('tag');
     var tagObjects = this.get('store').peekAll('tag-object');
     this.set('selected', []);
+
     tagObjects.filterBy('modelName', this.get('modelName')).filterBy('modelId', Number(this.get('modelId'))).forEach((tagObject) => {
       var tag = tags.filterBy('tagId', tagObject.get('tagId'))[0];
       this.get('selected').pushObject(tag.get('name'));
@@ -74,19 +75,23 @@ export default Component.extend(FieldMixin, {
       var tag        = tags.filterBy('name', tagName)[0];
 
       if (tag) {
-        this.tagItems.removeObject(tagName);
-        this.selected.removeObject(tagName);
+        this.get('dialog').confirm({
+          title : this.get('intl').t('form.deleteTag', { tag : tag.get('name')})
+        }).then(() => {
+          this.tagItems.removeObject(tagName);
+          this.selected.removeObject(tagName);
 
-        tag.destroyRecord().then((record) => {
-          this.get('store').unloadRecord(record);
-        });
-
-        var tagObject = tags.filterBy('tagId', tag.get('tagId'))[0];
-        if (tagObject) {
-          tagObject.destroyRecord().then((record) => {
+          tag.destroyRecord().then((record) => {
             this.get('store').unloadRecord(record);
           });
-        }
+
+          var tagObject = tags.filterBy('tagId', tag.get('tagId'))[0];
+          if (tagObject) {
+            tagObject.destroyRecord().then((record) => {
+              this.get('store').unloadRecord(record);
+            });
+          }
+        });
       }
     },
     

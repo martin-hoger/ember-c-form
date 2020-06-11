@@ -38,8 +38,7 @@ export default Component.extend(FieldMixin, {
     this.set('selected', []);
 
     tagObjects.filterBy('modelName', this.get('modelName')).filterBy('modelId', Number(this.get('modelId'))).forEach((tagObject) => {
-      var tag = tags.filterBy('tagId', tagObject.get('tagId'))[0];
-      this.get('selected').pushObject(tag.get('name'));
+      this.get('selected').pushObject(tagObject.get('tag.name'));
     });
   },
 
@@ -85,7 +84,7 @@ export default Component.extend(FieldMixin, {
             this.get('store').unloadRecord(record);
           });
 
-          var tagObject = tags.filterBy('tagId', tag.get('tagId'))[0];
+          var tagObject = tagObjects.filterBy('tagId', tag.get('tagId'))[0];
           if (tagObject) {
             tagObject.destroyRecord().then((record) => {
               this.get('store').unloadRecord(record);
@@ -137,13 +136,10 @@ export default Component.extend(FieldMixin, {
   
   //Delete tag object.
   deleteTagObjects : function(tagNames) {
-    var tags       = this.get('store').peekAll('tag').filterBy('modelName', this.get('modelName'));
     var tagObjects = this.get('store').peekAll('tag-object').filterBy('modelName', this.get('modelName')).filterBy('modelId', Number(this.get('modelId')));
-
     tagObjects.forEach((tagObject) => {
-      var tag = tags.filterBy('tagId', tagObject.get('tagId'))[0];
-      if (tag) {
-        if (!tagNames.includes(tag.get('name'))) {
+      if (tagObject.get('tag')) {
+        if (!tagNames.includes(tagObject.get('tag.name'))) {
           tagObject.destroyRecord().then((record) => {
             this.get('store').unloadRecord(record);
           });

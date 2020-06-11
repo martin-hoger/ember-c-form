@@ -101,6 +101,9 @@ button[disabled]     { cursor: default; background-color: #888888; }
 /* Style for not empty placeholder */
 .ui.form .ember-power-select-trigger-multiple-input:not([placeholder=""])    { width: 100% !important; }
 
+.ember-power-select-multiple-option                                          { background-color: #e8e8e8; color: #5e5e5e; font-size: 12px; padding-right: 8px; border: 0px;}
+.ember-power-select-multiple-remove-btn                                      { margin-left: 1px; margin-right: 4px; }
+
 .field-select.error .ember-power-select-trigger,
 .field-select.error .ember-power-select-multiple-trigger { background: #FFF6F6; border-color: #E0B4B4; color: #9F3A38; }
 
@@ -172,11 +175,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 #copy-to-clipboard-html-tables            { width: 100%; padding: 0.78571429em 1em; border: 1px solid rgba(34, 36, 38, 0.15); border-radius: 0.28571429rem; min-height: 250px; max-height:500px; margin: 20px 0 20px 0; overflow: hidden; overflow-y: scroll; }
 
 /* c-form-tag-input */
-.ui.form .ember-power-select-trigger-multiple-input[type="search"] {  }
-.ember-power-select-multiple-option                                { background-color: #e8e8e8; color: #5e5e5e; font-size: 12px; padding-right: 8px; text-transform: /* uppercase; */ lowercase;  border: 0px;}
-.ember-power-select-multiple-remove-btn                            { margin-left: 1px; margin-right: 4px; }
-
-/* c-form-tag-input */
+.ui.form .ember-power-select-trigger-multiple-input[type="search"]                          { }
 .ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 3px 8px 6px 8px; }
 .ui.form .form-tag-input .ember-power-select-trigger i.icon                                 { display: none; }
 .ui.form .form-tag-input .ember-power-select-trigger-multiple-input[type="search"]          { padding-top: 4px; }

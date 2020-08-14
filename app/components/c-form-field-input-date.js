@@ -21,6 +21,14 @@ export default Ember.Component.extend(FieldMixin, {
     if (this.get('inputless')) {
       this.set('pikadayInput', 'pikaday-inputless');
     }
+
+  },
+
+  didRender() {
+    this._super(...arguments);
+    //Not allowed autocomplete options.
+    var elementPikaday = document.querySelector('#' + this.get('elementId') + ' input');
+    elementPikaday.autocomplete = "off"; 
   },
 
   actions: {

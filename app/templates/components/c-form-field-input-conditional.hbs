@@ -1,0 +1,32 @@
+{{#if label}}
+  <label>{{label}} . {{value}} </label>
+{{/if}}
+
+checkedYes: {{checkedYes}}
+checkedNo: {{checkedNo}}
+model.field: {{get model field}}
+
+<div class="input-text-content">
+  <div class="two fields">
+    <div class="field">
+      <button class="ui {{if checkedYes "green" ""}} button" {{action "buttonClick" ""}}><i class="check icon"></i></button>
+      <button class="ui {{if checkedNo "red" ""}} button" {{action "buttonClick" -1}}><i class="close icon"></i></button>
+    </div>
+
+    {{#if isExpanded}}
+      {{!-- it must be class "field" in the yield --}}
+      {{yield}}
+    {{/if}}
+
+  </div>
+</div>
+
+{{#if description}}
+  <div class="description">{{description}}</div>
+{{/if}}
+
+{{#if error}}
+  <div class="error-message">
+      {{error}}
+  </div>
+{{/if}}

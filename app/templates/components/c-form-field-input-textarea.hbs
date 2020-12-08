@@ -4,10 +4,12 @@
 
 {{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows placeholder=placeholder}}
 
-{{#if (and model.hasDirtyAttributes displayNotification)}}
-  {{#transition-group transitionName="display-notification-wrapper"}}
-    <i class="save icon display-notification"></i>
-  {{/transition-group}}
+{{#if displaySave}}
+  {{#if (and model.hasDirtyAttributes displayNotification)}}
+    {{#transition-group transitionName="display-notification-wrapper"}}
+      <i class="save icon display-notification"></i>
+    {{/transition-group}}
+  {{/if}}
 {{/if}}
 
 {{#if description}}

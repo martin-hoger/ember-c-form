@@ -55,8 +55,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .display-notification-wrapper-leave                                              { opacity: 1; }
 .display-notification-wrapper-leave.display-notification-wrapper-leave-active    { opacity: 0; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; transition: all .3s ease-in-out; }
 
-.field-input-text .display-notification, 
-.field-input-textarea .display-notification, 
+.field-input-text .display-notification,
+.field-input-textarea .display-notification,
 .field-input-textarea-wysiwyg .display-notification                              { display: block; font-size: 1em;
                                                                                    z-index: 2; background-color: #fff; border: 1px solid #d7d7d7; border-radius: 15px; width: 30px; height: 30px; padding-top: 4px; padding-left: 1px; color: #b13d89; margin-right: -10px; }
 
@@ -181,10 +181,14 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 3px 8px 6px 8px; }
 .ui.form .form-tag-input .ember-power-select-trigger i.icon                                 { display: none; }
 .ui.form .form-tag-input .ember-power-select-trigger-multiple-input[type="search"]          { padding-top: 4px; }
-.form-tag-input-item                                                                        { text-transform: lowercase; }          
+.form-tag-input-item                                                                        { text-transform: lowercase; }
 .ember-basic-dropdown-content .ember-power-select-option i.icon.form-tag-input-delete       { color: transparent; }
 .ember-basic-dropdown-content .ember-power-select-option:hover i.icon.form-tag-input-delete { color: #fff; }
-i.icon.form-tag-input-delete                                                                { position: absolute; width: auto; height: auto; display: inline-block; right: 25px; font-size: 11px; padding: 0px 3px; border-radius: 3px; border: 1px solid transparent; margin-right: 10px; }          
-i.icon.form-tag-input-delete:hover                                                          { border: 1px solid #eee; }          
+i.icon.form-tag-input-delete                                                                { position: absolute; width: auto; height: auto; display: inline-block; right: 25px; font-size: 11px; padding: 0px 3px; border-radius: 3px; border: 1px solid transparent; margin-right: 10px; }
+i.icon.form-tag-input-delete:hover                                                          { border: 1px solid #eee; }
 
 
+/* c-form-field-input-conditional */
+.field-input-conditional .button-yes,
+.field-input-conditional .button-no     { width: 48%; margin-right: 0;}
+.field-input-conditional .button-no     { float: right}

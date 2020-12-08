@@ -16,8 +16,6 @@ import FieldMixin from './c-form-field-mixin';
 import { computed, defineProperty } from '@ember/object';
 
 export default Component.extend(FieldMixin, {
-  // Input type: text, password, etc...
-  type              : 'text',
   fieldType         : 'input-conditional',
 
   init() {
@@ -39,7 +37,7 @@ export default Component.extend(FieldMixin, {
     return this.get('value') === '' || (this.get('value') !== null && !this.get('checkedNo')) ;
   }),
 
-  // NO button clicked
+  // NO button clicked:
   checkedNo: computed('value', function() {
     return this.get('value') === -1;
   }),
@@ -58,6 +56,5 @@ export default Component.extend(FieldMixin, {
     }
 
   }
-
 
 });

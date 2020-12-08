@@ -1,36 +1,21 @@
-{{!-- <div class={{class}}> --}}
-{{!-- <div class="four wide field"> --}}
-
 {{#if label}}
   <label>{{label}}</label>
 {{/if}}
 
-{{!-- <div class={{class}}> --}}
-{{!-- <div class="input-text-content"> --}}
-  <div class="two fields">
-    {{!-- <div class=""> --}}
-    {{!-- <div class="four wide field"> --}}
-    <div class="field">
-      <button class="ui {{if checkedYes "green" ""}} button" {{action "buttonClick" ""}}><i class="check icon"></i></button>
-      <button class="ui {{if checkedNo "red" ""}} button" {{action "buttonClick" -1}}><i class="close icon"></i></button>
-    </div>
-
-    {{#if checkedYes}}
-      {{!-- it must be class "field" in the yield --}}
-      {{yield}}
-    {{/if}}
-
-
+<div class="two fields">
+  <div class="field">
+    <button class="button-yes ui {{if checkedYes "green" ""}} button" {{action "buttonClick" ""}}><i class="check icon"></i></button>
+    <button class="button-no ui {{if checkedNo "red" ""}} button" {{action "buttonClick" -1}}><i class="close icon"></i></button>
   </div>
-{{!-- </div> --}}
 
-
-{{!-- {{#if description}}
-  <div class="description">{{description}}</div>
-{{/if}} --}}
+  {{#if checkedYes}}
+    {{!-- it must be class "field" in the yield --}}
+    {{yield}}
+  {{/if}}
+</div>
 
 {{#if error}}
   <div class="error-message">
-      {{error}}
+    {{error}}
   </div>
 {{/if}}

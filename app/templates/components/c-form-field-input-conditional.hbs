@@ -13,7 +13,8 @@ model.field: {{get model field}}
       <button class="ui {{if checkedNo "red" ""}} button" {{action "buttonClick" -1}}><i class="close icon"></i></button>
     </div>
 
-    {{#if isExpanded}}
+    {{!-- {{#if isExpanded}} --}}
+    {{#if checkedYes}}
       {{!-- it must be class "field" in the yield --}}
       {{yield}}
     {{/if}}

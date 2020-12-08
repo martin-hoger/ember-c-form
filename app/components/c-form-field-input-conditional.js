@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import FieldMixin from './c-form-field-mixin';
-import { computed } from '@ember/object';
-import { defineProperty } from '@ember/object';
+import { computed, defineProperty } from '@ember/object';
+// import { defineProperty } from '@ember/object';
 
 export default Component.extend(FieldMixin, {
   // Input type: text, password, etc...
@@ -18,55 +18,45 @@ export default Component.extend(FieldMixin, {
       computed('model', 'field', 'model.' + this.get('field'), function () {
         var model = this.get('model');
         var field = this.get('field');
+        console.log('value comp', model.get(field));
         return model.get(field);
-      })
-    );
-    defineProperty(this, 'checkedYes',
-      computed('model', 'field', 'model.' + this.get('field'), function () {
-        var model = this.get('model');
-        var field = this.get('field');
-        return model.get(field) === '';
-      })
-    );
-    defineProperty(this, 'checkedNo',
-      computed('model', 'field', 'model.' + this.get('field'), function () {
-        var model = this.get('model');
-        var field = this.get('field');
-        return model.get(field) === -1;
       })
     );
   },
 
   // // (not-eq value "")
-  // checkedYes: computed('value', function() {
-  //   console.log('val', this.get('value'));
-  //   return this.get('value') === '';
-  // }),
-  //
-  // // {{#if (not-eq value -1)}}
-  // checkedNo: computed('value', function() {
-  //   console.log('val', this.get('value'));
-  //   return this.get('value') === -1;
-  // }),
-
-  isExpanded: computed('value', function() {
-    // {{#if (or checkedYes ((get model field)}}
-    var modelField = this.get('model.' + this.get('field'));
-    console.log('modelField', modelField);
-    return (this.get('value') !== -1);
+  checkedYes: computed('value', function() {
+    console.log('val', this.get('value'));
+    // a tady ještě zjistit, zda checkedNo nebo má value hodnotu jinou, než null a -1. any(function(object){
+    // Kdyý má totiž valkue == 200, tak musí být zakliknuto checkedYes! Ale když value je null, tak
+    // nezaškrtnuto nic
+    return this.get('value') === '' || (this.get('value') !== null && !this.get('checkedNo')) ;
   }),
+
+  // {{#if (not-eq value -1)}}
+  checkedNo: computed('value', function() {
+    console.log('val', this.get('value'));
+    return this.get('value') === -1;
+  }),
+
+  // isExpanded: computed('value', function() {
+  //   return this.get('checkedYes');
+  //   // return (!this.get('checkedNo') || this.get('value') === null) && (this.get('checkedYes') || this.get('value')) ;
+  // }),
 
 
   actions: {
 
     buttonClick (param) {
+      // If value already set, don't overwite it with ''. Finish!
+      if (this.get('checkedYes') && param === '') {
+        return;
+      }
+      var modelField = 'model.' + this.get('field');
       console.log(param);
-      // this.set('value', param);
-      var modelString = 'model.' + this.get('field');
-      console.log('modelString', modelString);
-      // this.set('modelString', param);
-      this.set('row.initialGarden', param);
-
+      console.log('modelField', modelField);
+      // Set model.field to '' or -1
+      this.set(modelField, param);
     }
 
   }

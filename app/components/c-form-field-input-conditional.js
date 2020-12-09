@@ -9,6 +9,18 @@
   ''   : value set, but not yet to the right value. {{yield}} field showen
   -1   : value set to 'NO' (e.g. there is NO garden!)
   something else : set to specified value
+
+  Usage with input-text in yield
+  {{#c-form-field-input-conditional
+    model=this
+    field="inputText"
+    label="c-form-field-input-conditional"
+  }}
+    {{c-form-field-input-text
+      model=this
+      field="inputText"
+    }}
+  {{/c-form-field-input-conditional}}
 */
 
 import Component from '@ember/component';
@@ -26,6 +38,9 @@ export default Component.extend(FieldMixin, {
       computed('model', 'field', 'model.' + this.get('field'), function () {
         var model = this.get('model');
         var field = this.get('field');
+        if (!model || !field) {
+          return;
+        }
         return model.get(field);
       })
     );
@@ -51,8 +66,7 @@ export default Component.extend(FieldMixin, {
         return;
       }
       var modelField = 'model.' + this.get('field');
-      // Set model.field to '' or -1
-      this.set(modelField, param);
+      this.set(modelField, param);  // Set model.field to '' or -1
     }
 
   }

@@ -190,5 +190,5 @@ i.icon.form-tag-input-delete:hover                                              
 
 /* c-form-field-input-conditional */
 .field-input-conditional .button-yes,
-.field-input-conditional .button-no     { width: 48%; margin-right: 0;}
+.field-input-conditional .button-no     { width: 48%; margin-right: 0; height: 34.6px !important; }
 .field-input-conditional .button-no     { float: right}

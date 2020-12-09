@@ -98,6 +98,26 @@
         }}
       </div>
 
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          label="c-form-field-input-text"
+          allowClear=true
+        }}
+
+        {{#c-form-field-input-conditional
+          model=this
+          field="inputText"
+          label="c-form-field-input-conditional"
+        }}
+          {{c-form-field-input-text
+            model=this
+            field="inputText"
+          }}
+        {{/c-form-field-input-conditional}}
+      </div>
+
       <br/>
       <br/>
 
@@ -194,6 +214,27 @@
           placeholder="c-form-field-star-rating"
         }}
       </div>
+
+      <div class="four fields">
+        {{c-form-field-input-text
+          model=this
+          field="inputText"
+          label="c-form-field-input-text"
+          allowClear=true
+        }}
+
+        {{#c-form-field-input-conditional
+          model=this
+          field="inputText"
+          label="c-form-field-input-conditional"
+        }}
+          {{c-form-field-input-text
+            model=this
+            field="inputText"
+          }}
+        {{/c-form-field-input-conditional}}
+      </div>
+
 
     <br/>
 

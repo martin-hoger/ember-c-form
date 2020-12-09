@@ -3,7 +3,7 @@ import Component from '@ember/component';
 export default Component.extend({
 
   tagName  : '',
-  formSizes: ['mini', '', 'large', 'huge'],
+  formSizes: ['mini', 'tiny', 'small', 'large', 'huge'],
   highlightColors: {
     "": "#ffffff",
     "red": "#FC9272",

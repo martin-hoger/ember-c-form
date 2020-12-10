@@ -11,6 +11,7 @@
 .form-field-required                            { color: #FF0000; }
 
 .form-fieldset-label                            { display: inline-block; width: 100%; padding: 8px; font-weight: bold; background-color: #F8F8F8; border: 1px solid #dddddd; border-top-left-radius: 4px; border-top-right-radius: 4px; cursor: pointer; }
+.form-fieldset-label-text                       { display: inline-block; width: auto; }
 .form-fieldset-label-collapse                   { border: 1px solid #dddddd; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;}
 .form-fieldset-label-collapsible                { display: inline-block; float: right; width: auto; text-align: right; margin-right: 2px; }
 .form-fieldset-parameters                       { position: absolute; width: 60px; top: 6px; right: 0px; margin-right: 36px; }

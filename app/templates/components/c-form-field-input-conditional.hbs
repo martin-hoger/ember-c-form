@@ -2,10 +2,10 @@
   <label>{{label}}</label>
 {{/if}}
 
-<div class="two fields">
+<div class="two fields buttons-and-yield">
   <div class="field">
-    <button class="button-yes ui {{if checkedYes "green" ""}} icon button" {{action "buttonClick" ""}}><i class="check icon"></i></button>
-    <button class="button-no ui {{if checkedNo "red" ""}} icon button" {{action "buttonClick" -1}}><i class="close icon"></i></button>
+    <button class="button-yes ui {{if checkedYes "green" ""}} icon button" {{action "buttonClick" valueYes}}><i class="check icon"></i></button>
+    <button class="button-no ui {{if checkedNo "red" ""}} icon button" {{action "buttonClick" valueNo}}><i class="close icon"></i></button>
   </div>
 
   {{#if checkedYes}}

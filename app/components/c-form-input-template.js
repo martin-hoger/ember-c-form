@@ -117,7 +117,9 @@ export default Component.extend({
     var regExPattern   = '\\b.*' + searchQuery + '.*\\b';
     var regexp         = new RegExp(regExPattern,'gi');
     return this.get('templates').filter(function(row){
-      return row.get('searchFulltext').match(regexp);
+      if (row.get('searchFulltext')) {
+        return row.get('searchFulltext').match(regexp);
+      }
     });
   }),
 

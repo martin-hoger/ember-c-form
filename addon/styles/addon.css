@@ -188,8 +188,10 @@ button[disabled]     { cursor: default; background-color: #888888; }
 i.icon.form-tag-input-delete                                                                { position: absolute; width: auto; height: auto; display: inline-block; right: 25px; font-size: 11px; padding: 0px 3px; border-radius: 3px; border: 1px solid transparent; margin-right: 10px; }
 i.icon.form-tag-input-delete:hover                                                          { border: 1px solid #eee; }
 
-
 /* c-form-field-input-conditional */
 .field-input-conditional .button-yes,
-.field-input-conditional .button-no     { width: 48%; margin-right: 0; height: 34.6px !important; }
-.field-input-conditional .button-no     { float: right}
+.field-input-conditional .button-no                           { width: 48%; margin-right: 0; height: 34.6px !important; }
+.field-input-conditional .button-no                           { float: right}
+.field-input-conditional > .two.fields.buttons-and-yield      { margin-bottom: 0;}
+/* Dont't show error message for the yield content (we don't want two error messages) */
+.field-input-conditional .field.error .error-message          { display: none;}

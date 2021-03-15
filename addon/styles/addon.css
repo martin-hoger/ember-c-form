@@ -9,6 +9,7 @@
 .form-field-item                                { float: left; width: 300px; }
 .form-field-item-error                          { color: #FF0000; }
 .form-field-required                            { color: #FF0000; }
+.ui.form .required.field > label:after          { display: contents; content: ' *'; }
 
 .form-fieldset-label                            { display: inline-block; width: 100%; padding: 8px; font-weight: bold; background-color: #F8F8F8; border: 1px solid #dddddd; border-top-left-radius: 4px; border-top-right-radius: 4px; cursor: pointer; }
 .form-fieldset-label-text                       { display: inline-block; width: auto; }

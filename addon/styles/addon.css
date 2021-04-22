@@ -183,7 +183,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .ui.form .form-tag-input .ember-power-select-trigger                                        { padding: 3px 8px 6px 8px; }
 .ui.form .form-tag-input .ember-power-select-trigger i.icon                                 { display: none; }
 .ui.form .form-tag-input .ember-power-select-trigger-multiple-input[type="search"]          { padding-top: 4px; }
-.form-tag-input-item                                                                        { text-transform: lowercase; }
+.form-tag-input-item                                                                        { }
 .ember-basic-dropdown-content .ember-power-select-option i.icon.form-tag-input-delete       { color: transparent; }
 .ember-basic-dropdown-content .ember-power-select-option:hover i.icon.form-tag-input-delete { color: #fff; }
 i.icon.form-tag-input-delete                                                                { position: absolute; width: auto; height: auto; display: inline-block; right: 25px; font-size: 11px; padding: 0px 3px; border-radius: 3px; border: 1px solid transparent; margin-right: 10px; }

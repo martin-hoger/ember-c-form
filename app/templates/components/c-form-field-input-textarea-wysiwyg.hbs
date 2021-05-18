@@ -4,12 +4,6 @@
 
 {{quill-editor options=options value=(mut text) textChange=(action "updateText")}}
 
-{{#if (and model.hasDirtyAttributes displayNotification)}}
-  {{#transition-group transitionName="display-notification-wrapper"}}
-    <i class="save icon display-notification"></i>
-  {{/transition-group}}
-{{/if}}
-
 {{#if description}}
   <div class="description">{{description}}</div>
 {{/if}}

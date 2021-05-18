@@ -14,8 +14,9 @@ import FieldMixin from './c-form-field-mixin';
 
 export default Component.extend(FieldMixin, {
   fieldType : 'input-textarea-wysiwyg',
+  value     : '',
 
-  options   : {
+  options : {
     theme : 'snow',
     modules : {
       toolbar : [
@@ -23,6 +24,7 @@ export default Component.extend(FieldMixin, {
         ['bold', 'italic', 'underline','strike'],
         [{'color' : []}],
         [{'list'  : 'ordered'}, {'list': 'bullet'}],
+        [{'indent': '-1'}, { 'indent': '+1'}],
         // [{'align' : []}],
       ]
     }
@@ -30,7 +32,22 @@ export default Component.extend(FieldMixin, {
 
   init() {
     this._super(...arguments);                                              
-    this.set('text', this.get('model.' + this.get('field')));
+    if (this.get('model') && this.get('field')) {
+      this.set('text', this.get('model.' + this.get('field')));
+    }
+    if (this.get('value')) {
+      this.set('text', this.get('value'));
+    }
+  },
+
+  didUpdateAttrs() {
+    this._super(...arguments);
+    if (this.get('value')) {
+      var content = this.element.querySelector(".ql-editor");
+      if (content.innerHTML != this.get('value')) {
+        content.innerHTML = this.get('value');
+      }
+    }
   },
 
   actions: {
@@ -42,7 +59,10 @@ export default Component.extend(FieldMixin, {
         value = '';
       }
 
-      this.set('model.' + this.get('field'), value);
+      if (this.get('model') && this.get('field')) {
+        this.set('model.' + this.get('field'), value);
+      }
+      this.set('value', value);
       this.sendAction();
     }
   },

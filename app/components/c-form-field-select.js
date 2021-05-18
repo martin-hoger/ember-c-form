@@ -80,8 +80,30 @@ export default Component.extend(FieldMixin, {
   },
 
   // Some data needs to be converted.
-  inputOptions: computed('options.[]', function () {
-    return this.convertInput(this.get('options'));
+  inputOptions: computed('options.[]', 'selected.[]', function () {
+    //Multiple selection
+    //Filter selected options.
+    if (this.get('multiple')) {
+      //No options are selected.
+      if (!this.get('selected')) {
+        return this.convertInput(this.get('options'));
+      }
+      var remaningOptions = [];
+      if (this.get('options')) {
+        this.get('options').forEach((option) => {
+          if (this.get('selected')) {
+            if (!this.get('selected').includes(option)) {
+              remaningOptions.pushObject(option);
+            }
+          }
+        });
+      }
+      return this.convertInput(remaningOptions);
+    }
+    //Not multiple selection.
+    if (!this.get('multiple')) {
+      return this.convertInput(this.get('options'));
+    }
   }),
 
   // If search key is passed, enable search.

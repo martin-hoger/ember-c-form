@@ -14,7 +14,6 @@
     verticalPosition=verticalPosition
     dropdownClass=dropdownClass
     placeholder=placeholder
-    placeholderComponent="c-form-powerselect-placeholder"
     closeOnSelect=closeOnSelect
     onchange=(action "selected") as |item|}}
       {{#if hasBlock}}
@@ -23,6 +22,7 @@
         {{item}}
       {{/if}}
   {{/power-select-multiple}}
+  {{!-- placeholderComponent="c-form-powerselect-placeholder" --}}
 
 {{else}}
 
@@ -36,7 +36,6 @@
     verticalPosition=verticalPosition
     dropdownClass=dropdownClass
     placeholder=placeholder
-    placeholderComponent="c-form-powerselect-placeholder"
     onchange=(action "selected") as |item|}}
       {{#if hasBlock}}
         {{yield item}}
@@ -44,6 +43,7 @@
         {{item}}
       {{/if}}
   {{/power-select}}
+  {{!-- placeholderComponent="c-form-powerselect-placeholder" --}}
 
 {{/if}}
 

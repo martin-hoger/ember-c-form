@@ -58,7 +58,8 @@ export default Component.extend(FieldMixin, {
               'modelName'  : this.get('modelName'),
               'name'       : select.searchText,
               'practice'   : this.get('session.user.practice'),
-            }).save().then(() => {
+            }).save().then((record) => {
+              this.set('session.user.practice.tags').pushObject(record);
               //Create tag object.
               this.createTagObjects(this.get('selected'));
             });
@@ -127,7 +128,9 @@ export default Component.extend(FieldMixin, {
               'modelId'   : Number(this.get('modelId')),
               'tagId'     : tag.get('tagId'),
               'practice'  : this.get('session.user.practice'),
-            }).save();
+            }).save().then((record) => {
+              this.set('session.user.practice.tagObjects').pushObject(record);
+            });
           }
         }
       });

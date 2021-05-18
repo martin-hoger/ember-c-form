@@ -7,7 +7,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { clickTrigger, selectChoose } from 'ember-power-select/test-support/helpers';
-import { setupMirage } from 'ember-cli-mirage/test-support';
+// import { setupMirage } from 'ember-cli-mirage/test-support';
 import { render, click } from '@ember/test-helpers';
 import { pauseTest } from '@ember/test-helpers';
 
@@ -16,7 +16,7 @@ registerPowerSelectHelpers();
 
 module('Integration | Component | c-form-field-select-simple', function(hooks) {
   setupRenderingTest(hooks);
-  setupMirage(hooks);
+  // setupMirage(hooks);
 
   const optionsObjects = [
     { id: 1, value: 'Airplane' },

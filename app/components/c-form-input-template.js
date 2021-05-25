@@ -24,12 +24,13 @@ import { scheduleOnce } from '@ember/runloop';
 import { inject } from '@ember/service';
 
 export default Component.extend({
+  classNames : ['input-template'],
 
-  store : inject(),
-
-  classNames: ['input-template'],
-  templates : null,
-  hasFocus  : false,
+  store      : inject(),
+  dialog     : inject(),
+  intl       : inject(),
+  templates  : null,
+  hasFocus   : false,
 
   init() {
     this._super(...arguments);
@@ -48,9 +49,9 @@ export default Component.extend({
         }
         // Text not empty and not same as already saved? Then enable save.
         if (text && includesText == '') {
-          return false
+          return false;
         } else {
-          return true
+          return true;
         }
       })
     );
@@ -173,12 +174,14 @@ export default Component.extend({
 
     // Delete icon clicked -> delete after user confirmation
     deleteTemplate(template) {
-      var confirmation = confirm('Are you sure?');
-      if (confirmation) {
+      this.get('dialog').confirm({
+        title : this.get('intl').t('form.confirmDelete')
+      }).then(()=> {
         template.deleteRecord();
-        template.save();
-        this.loadTemplates();
-      }
+        template.save().then(()=> {
+          this.loadTemplates();
+        });
+      });
     }
 
   }

@@ -28,7 +28,7 @@
             }}
             {{#each rowsFiltered as |template|}}
               <div class="row" {{action "applyTemplate" template}}>
-                <span class="text">{{template.text}} </span>
+                <span class="text">{{{template.text}}} </span>
                 <i class="delete-icon link trash alternate outline icon" {{action "deleteTemplate" template bubbles=false}}></i>
               </div>
             {{/each}}

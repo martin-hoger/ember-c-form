@@ -163,8 +163,9 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .input-template                           { clear: both; position: relative; }
 .input-template-wrapper                   { clear: both; position: absolute; }
 .input-template-content                   { position: absolute; }
-.input-template-window                    { text-align: left; width: 380px; border: 1px solid #ddd; background-color: #fff; padding: 10px; margin: 5px 0px; z-index: 50; -moz-box-shadow: 2px 2px 6px #555; -webkit-box-shadow: 2px 2px 6px #555; box-shadow: 2px 2px 6px #555; font-size: 11px; }
+.input-template-window                    { text-align: left; width: 500px; border: 1px solid #ddd; background-color: #fff; padding: 10px; margin: 5px 0px; z-index: 50; -moz-box-shadow: 2px 2px 6px #555; -webkit-box-shadow: 2px 2px 6px #555; box-shadow: 2px 2px 6px #555; font-size: 11px; }
 .input-template-window .row               { border-bottom: 1px dotted #ddd; margin: 0px 5px; cursor: pointer; clear: both; line-height: 15px; padding: 2px 0 3px; }
+.input-template-window .row .text         { max-width: 442px; display: inline-block; }
 .input-template-window .row:last-child    { border-bottom: 0; }
 .input-template-window .delete-icon       { float: right; width: 20px; height: 18px; }
 .input-template-window .delete-icon:hover { background-color: #bababa; }

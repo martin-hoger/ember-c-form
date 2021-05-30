@@ -51,7 +51,9 @@ export default Component.extend(FieldMixin, {
 
 
   //Backup:
-  optionsPrepared : computed('options.[]', 'selected', function() {
+  optionsPrepared : computed('options.[]', function() {
+  //TODO: selected?
+  // optionsPrepared : computed('options.[]', 'selected', function() {
     var options     = [];
     var selectId    = this.get('selectId');
     var selectValue = this.get('selectValue');

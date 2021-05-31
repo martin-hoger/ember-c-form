@@ -12,7 +12,7 @@ Usage: (onChange - fire external action)
   }}
 */
 export default Component.extend(FieldMixin, {
-  classNameBindings : ['inline:inline-checkbox'],
+  classNameBindings : ['inline:inline-checkbox', 'disabled:checkbox-disabled'],
   fieldType         : 'input-checkbox',
   valueOn           : 1,
   valueOff          : 0,
@@ -33,12 +33,14 @@ export default Component.extend(FieldMixin, {
 
   actions: {
     toggle: function() {
-      var isChecked = this.get('isChecked');
-      var newValue  = isChecked ? this.get('valueOff') : this.get('valueOn');
-      this.set('model.' + this.get('field'), newValue);
-      // Fire external action passed to this component.
-      if (this.get('onChange')) {
-        this.get('onChange')(newValue);
+      if (!this.get('disabled')) {
+        var isChecked = this.get('isChecked');
+        var newValue  = isChecked ? this.get('valueOff') : this.get('valueOn');
+        this.set('model.' + this.get('field'), newValue);
+        // Fire external action passed to this component.
+        if (this.get('onChange')) {
+          this.get('onChange')(newValue);
+        }
       }
     },
   }

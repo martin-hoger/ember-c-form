@@ -144,6 +144,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 .inline-checkbox .x-toggle-component { display: inline-block; float: left; width: 75px; }
 .inline-checkbox label               { display: inline-block !important; width: 330px; }
+.checkbox-disabled                   { opacity: 0.5; }
 
 /* Yes or no toggle */
 .form-field-input-yes          { background: #AE95A7 url(../ember-c-form/form-check.svg?new) no-repeat 50% 50% !important; background-size: 17px !important; color: transparent; }

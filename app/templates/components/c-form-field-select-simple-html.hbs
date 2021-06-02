@@ -4,7 +4,7 @@
 
 <select onChange={{action "selectChanged" value="target.value"}} disabled={{if disabled "disabled" ""}}>
   {{#each optionsPrepared as |item|}}
-    <option value={{item.id}} selected={{item.selected}} >
+    <option value={{item.id}} selected={{if (eq item.id this.selected) true false}}>
       {{item.value}}
     </option>
   {{/each}}

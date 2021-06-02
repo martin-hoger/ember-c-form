@@ -42,6 +42,7 @@ export default Component.extend(FieldMixin, {
     // It is not possible to define computed property with variable in it.
     //     It is not possible to make:
     //     Ember.computed('model.' + this.get('field')
+    
     defineProperty(this, 'selected', computed('model.' + this.get('field'), 'field', function() {
       if (this.get('model')) {
         return this.get('model.' + this.get('field'));
@@ -49,21 +50,18 @@ export default Component.extend(FieldMixin, {
     }));
   },
 
-
-  //Backup:
+  //Options.
   optionsPrepared : computed('options.[]', function() {
-  //TODO: selected?
-  // optionsPrepared : computed('options.[]', 'selected', function() {
     var options     = [];
     var selectId    = this.get('selectId');
     var selectValue = this.get('selectValue');
     this.get('options').forEach((data) => { 
-      let id = typeof data.get === 'function' ? data.get(selectId) : data[selectId];
+      let id    = typeof data.get === 'function' ? data.get(selectId)    : data[selectId];
       let value = typeof data.get === 'function' ? data.get(selectValue) : data[selectValue];
       options.pushObject({
         'id'       : id,
         'value'    : value,
-        'selected' : this.get('selected') == id,
+        // 'selected' : this.get('selected') == id,
       });
     });
     return options;

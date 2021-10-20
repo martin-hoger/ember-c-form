@@ -29,7 +29,10 @@ export default Ember.Component.extend({
           this.set('expanded', true);
         }
       }
-    }
+    },
+
+    parameterAction: function() {
+    },
   }
 });
 

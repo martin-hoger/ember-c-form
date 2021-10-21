@@ -4,7 +4,7 @@
 
 <div class="input-text-content">
 
-  {{input type=type value=(mut (get model field)) min=min max=max maxlength=maxlength placeholder=placeholder disabled=(if disabled "disabled" "") title=title}}
+  {{input type=type value=(mut (get model field)) min=min max=max maxlength=maxlength placeholder=placeholder disabled=(if disabled "disabled" "") title=title autocomplete="off"}}
 
   <div class="suffix-box">
     {{#if unit}}

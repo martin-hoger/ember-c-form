@@ -51,6 +51,7 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.small .field-input-text .suffix-icon { top: 2px; }
 .field-input-text .input-text-content         { position: relative; }
 .field-input-text .input-text-content .suffix-box { position: absolute; right: 1em; top: 6px; }
+.field-input-text .input-text-content .required-internal   { position: absolute; right: 0.4em; top: 4px; font-size: 1.3em; color: red;}
 
 .display-notification-wrapper-enter                                              { opacity: 0; }
 .display-notification-wrapper-enter.display-notification-wrapper-enter-active    { opacity: 1; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; transition: all .3s ease-in-out;  }

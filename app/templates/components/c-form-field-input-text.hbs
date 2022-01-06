@@ -26,6 +26,10 @@
     {{yield}}
   {{/if}}
 
+  {{#if requiredInternal}}
+    <span class="required-internal">*</span>
+  {{/if}}
+
 </div>
 
 {{#if description}}

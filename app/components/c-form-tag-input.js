@@ -59,7 +59,7 @@ export default Component.extend(FieldMixin, {
               'name'       : select.searchText,
               'practice'   : this.get('session.user.practice'),
             }).save().then((record) => {
-              this.set('session.user.practice.tags').pushObject(record);
+              this.get('session.user.practice.tags').pushObject(record);
               //Create tag object.
               this.createTagObjects(this.get('selected'));
             });
@@ -123,13 +123,15 @@ export default Component.extend(FieldMixin, {
           if (!tagObject) {
             //Create tag object.
             this.store.createRecord('tag-object', {
-              'id'        : this.get('modelName') + '-' + Number(this.get('modelId')) + '-' + tag.get('tagId'), 
-              'modelName' : this.get('modelName'),
-              'modelId'   : Number(this.get('modelId')),
-              'tagId'     : tag.get('tagId'),
-              'practice'  : this.get('session.user.practice'),
+              'id'              : this.get('modelName') + '-' + Number(this.get('modelId')) + '-' + tag.get('tagId'), 
+              'modelName'       : this.get('modelName'),
+              'modelId'         : Number(this.get('modelId')),
+              'parentModelId'   : Number(this.get('parentModelId')),
+              'parentModelName' : this.get('parentModelName'),
+              'tagId'           : tag.get('tagId'),
+              'practice'        : this.get('session.user.practice'),
             }).save().then((record) => {
-              this.set('session.user.practice.tagObjects').pushObject(record);
+              this.get('session.user.practice.tagObjects').pushObject(record);
             });
           }
         }

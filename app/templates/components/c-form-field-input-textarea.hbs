@@ -2,7 +2,7 @@
   <label>{{label}}</label>
 {{/if}}
 
-{{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows placeholder=placeholder}}
+{{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows placeholder=placeholder autocomplete="off"}}
 
 {{#if displaySave}}
   {{#if (and model.hasDirtyAttributes displayNotification)}}

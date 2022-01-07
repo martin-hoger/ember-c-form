@@ -26,8 +26,8 @@
     {{yield}}
   {{/if}}
 
-  {{#if requiredInternal}}
-    <span class="required-internal">*</span>
+  {{#if (and required (not label))}}
+    <span class="required">*</span>
   {{/if}}
 
 </div>

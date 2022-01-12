@@ -5,11 +5,11 @@
 {{#if multiple}}
 
   {{#power-select-multiple
-    disabled=disabled 
+    disabled=disabled
     options=inputOptions
-    selected=selected 
-    searchEnabled=searchEnabled 
-    searchField=searchField 
+    selected=selected
+    searchEnabled=searchEnabled
+    searchField=searchField
     allowClear=allowClear
     verticalPosition=verticalPosition
     dropdownClass=dropdownClass
@@ -26,12 +26,12 @@
 
 {{else}}
 
-  {{#power-select 
-    disabled=disabled 
+  {{#power-select
+    disabled=disabled
     options=inputOptions
-    selected=selected 
-    searchEnabled=searchEnabled 
-    searchField=searchField 
+    selected=selected
+    searchEnabled=searchEnabled
+    searchField=searchField
     allowClear=allowClear
     verticalPosition=verticalPosition
     dropdownClass=dropdownClass
@@ -57,3 +57,6 @@
   </div>
 {{/if}}
 
+{{#if (and required (not label))}}
+  <span class="required">*</span>
+{{/if}}

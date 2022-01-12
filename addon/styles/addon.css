@@ -66,7 +66,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .field-input-date-no-month-year-change                                           { position: absolute; width: 135px; height: 54px; z-index: 99999; background-color: transparent; top: 0px; left: 75px; }
 
 /* Select */
-
+.field-select             { position: relative;}
+.field-select .required   { position: absolute; right: 1.2em; top: 4px; font-size: 1.3em; color: red;}
 .ember-power-select-multiple-trigger,
 .ember-power-select-trigger,
 .ember-power-select-dropdown { font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif; margin: 0em; outline: none; -webkit-appearance: none; tap-highlight-color: rgba(255, 255, 255, 0); line-height: 1.21428571em; padding: 0.67857143em 1em; font-size: 1em; background: #FFFFFF; border: 1px solid rgba(34, 36, 38, 0.15); color: rgba(0, 0, 0, 0.87); border-radius: 0.28571429rem; -webkit-box-shadow: 0em 0em 0em 0em transparent inset; box-shadow: 0em 0em 0em 0em transparent inset; -webkit-transition: color 0.1s ease, border-color 0.1s ease; transition: color 0.1s ease, border-color 0.1s ease; }

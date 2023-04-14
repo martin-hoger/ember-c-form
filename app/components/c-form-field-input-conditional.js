@@ -68,7 +68,9 @@ export default Component.extend(FieldMixin, {
   // YES button clicked or value already set.
   // value is: '', '12' or other value:
   checkedYes: computed('value', function() {
-    return this.get('value') == this.get('valueYes') || (this.get('value') !== null && !this.get('checkedNo')) ;
+    return this.get('value') == this.get('valueYes') || (this.get('value') !== null && this.get('value') !== undefined && !this.get('checkedNo')) ;
+    // old version till 14.4.2023. There was a problem: it showed checkedYes when value == undefined:
+    // return this.get('value') == this.get('valueYes') || (this.get('value') !== null && !this.get('checkedNo')) ;
   }),
 
   // NO button clicked:

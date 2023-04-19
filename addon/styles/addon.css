@@ -109,6 +109,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 .ember-power-select-multiple-option                                          { background-color: #e8e8e8; color: #5e5e5e; font-size: 12px; padding-right: 8px; border: 0px;}
 .ember-power-select-multiple-remove-btn                                      { margin-left: 1px; margin-right: 4px; }
+.ember-power-select-search-input                                             { line-height: 24px; background: transparent url(../ember-c-form/search-magnifying-glass.svg) no-repeat 3px; background-size: 22px; padding: 0 5px 0 30px;}
+.ember-power-select-trigger                                                  { min-height: 2.7245em;}
 
 .field-select.error .ember-power-select-trigger,
 .field-select.error .ember-power-select-multiple-trigger { background: #FFF6F6; border-color: #E0B4B4; color: #9F3A38; }

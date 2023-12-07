@@ -6,12 +6,13 @@
     Inputs:
       title - title of the <input>
       inputClassName - you can pass class name to the <input>
-      anonymized - true shows "*****" insted of real data
+      anonymized - true shows "*****" insted of real data. If no data, show nothing
 
 */
 
 import Component from '@ember/component';
 import FieldMixin from './c-form-field-mixin';
+import { computed } from '@ember/object';
 
 export default Component.extend(FieldMixin, {
   // Input type: text, password, etc...
@@ -23,5 +24,17 @@ export default Component.extend(FieldMixin, {
   keyUp : function() {
     this.sendAction();
   },
+
+  anonymizedValue: computed('anonymized', function() {
+    var value = this.get('model.' + this.get('field'));
+    var anonymizedValue;
+    if (value) {
+      anonymizedValue = '***********';
+    } else {
+      anonymizedValue = null;
+    }
+
+    return anonymizedValue;
+  }),
 
 });

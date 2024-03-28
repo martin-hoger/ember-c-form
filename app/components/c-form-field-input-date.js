@@ -1,3 +1,17 @@
+/*
+  format    - possible to define format of the date.
+  Usage: set month and year instead of date, month, year.
+  {{c-form-field-input-date
+    model=session.statsBrokerCommentRatings
+    field="datepickerDateFrom"
+    placeholder="Datum od"
+    class="two wide"
+    allowClear=true
+    format="MM.YYYY"
+    onChange=(route-action "dateChanged")
+  }}
+*/
+
 import Ember from 'ember';
 import moment from 'moment';
 import FieldMixin from './c-form-field-mixin';
@@ -28,11 +42,11 @@ export default Ember.Component.extend(FieldMixin, {
     this._super(...arguments);
     //Not allowed autocomplete options.
     var elementPikaday = document.querySelector('#' + this.get('elementId') + ' input');
-    elementPikaday.autocomplete = "off"; 
+    elementPikaday.autocomplete = "off";
   },
 
   actions: {
-    //Selection from date input. 
+    //Selection from date input.
     setDate: function(value) {
       this.set('model.' + this.get('field'), value);
 
@@ -61,5 +75,3 @@ export default Ember.Component.extend(FieldMixin, {
   },
 
 });
-
-

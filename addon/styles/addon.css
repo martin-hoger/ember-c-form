@@ -44,6 +44,9 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .form.disabled            { pointer-events: none; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 .form.disabled .button    { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50); -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5; }
 
+/* Forms - audit */
+.field-audit-label { padding: 3px 3px !important; cursor: pointer; opacity: 0; -webkit-transition: all .3s ease-in-out !important; transition: all .3s ease-in-out !important; }
+.field:hover .field-audit-label { opacity: 1 !important;}
 
 /* Forms - input txt */
 .field-input-text .unit                    { display: inline-block; font-size: 1em;z-index: 1; position: relative; top: 7px; }

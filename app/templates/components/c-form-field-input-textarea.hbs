@@ -1,5 +1,5 @@
 {{#if label}}
-  <label>{{label}}</label>
+  {{c-form-field-label fieldComponent=this}}
 {{/if}}
 
 {{textarea value=(mut (get model field)) disabled=(if disabled "disabled" "") rows=rows placeholder=placeholder autocomplete="off"}}

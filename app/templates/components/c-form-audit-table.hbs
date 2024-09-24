@@ -1,0 +1,28 @@
+<table class="ui celled table admin-table audit-view">
+  <thead>
+    <tr>
+      <td>Datum</td>
+      <td>Uživatel</td>
+      <td>Pole</td>
+      <td>Akce</td>
+      <td>Hodnota</td>
+      <td>Původní hodnota</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each auditRows as |row|}}
+      <tr {{action "onSelect" row.user}}>
+        <td>
+          {{date-display row.datetime "long"}}
+        </td>
+        <td>
+            {{c-broker-teaser-small broker=row.user}}
+        </td>
+        <td>{{row.fieldName}}</td>
+        <td>{{row.action}}</td>
+        <td class="value-new">{{row.value}}</td>
+        <td class="value-old">{{row.valueOld}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

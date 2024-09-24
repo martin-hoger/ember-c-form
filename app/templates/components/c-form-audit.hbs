@@ -1,0 +1,29 @@
+<h2 class="ui header">
+  <i class="archive icon"></i>
+  <div class="content">
+    {{#if model.name}}
+        {{model.name}}
+    {{/if}}
+    {{#if label}}
+      <div class="sub header">
+          Pole: {{label}}
+      </div>
+    {{/if}}
+  </div>
+</h2>
+{{c-form-audit-table auditRows=auditRows class="single-field" onSelect=(action "onSelect")}}
+
+{{#if auditRowsAll}}
+  <h2 class="ui header">
+    <i class="archive icon"></i>
+    <div class="content">
+      {{#if model.name}}
+          {{model.name}}
+      {{/if}}
+      <div class="sub header">
+          Všechny změny provedené uživatelem "{{selectedUser.name}}"
+      </div>
+    </div>
+  </h2>
+  {{c-form-audit-table auditRows=auditRowsAll class="all-fields"}}
+{{/if}}

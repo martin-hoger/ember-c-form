@@ -1,0 +1,11 @@
+<label>
+  {{fieldComponent.label}}
+  {{#if (and fieldComponent.showAudit (has-role "admin-users"))}}
+    <label class="field-audit-label ui mini label orange" {{action (toggle "openAudit" this)}}>Audit</label>
+  {{/if}}
+</label>
+{{#if openAudit}}
+  {{#c-partial-overlay visible=openAudit onClose=(toggle "openAudit" this)}}
+    {{c-form-audit model=fieldComponent.model field=fieldComponent.field label=fieldComponent.label}}
+  {{/c-partial-overlay}}
+{{/if}}

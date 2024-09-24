@@ -1,5 +1,5 @@
 {{#if label}}
-  <label>{{label}}</label>
+  {{c-form-field-label fieldComponent=this}}
 {{/if}}
 
 {{quill-editor options=options value=(mut text) textChange=(action "updateText")}}

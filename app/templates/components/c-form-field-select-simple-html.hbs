@@ -1,5 +1,5 @@
 {{#if label}}
-  <label>{{label}}</label>
+  {{c-form-field-label fieldComponent=this}}
 {{/if}}
 
 <select onChange={{action "selectChanged" value="target.value"}} disabled={{if disabled "disabled" ""}}>

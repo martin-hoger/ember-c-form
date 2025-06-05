@@ -1,8 +1,33 @@
+
+
+
+
 <div id="c-form-test-content">
 
   {{#each formSizes as |formSize|}}
     formSize: {{formSize}}<br/>
     <form class="ui {{formSize}} form">
+
+      {{c-form-field-input-text
+        model=this
+        field="counterofferPrice"
+        label="Protinabídka"
+        required=true
+      }}
+      {{c-form-field-input-text
+        model=this
+        field="counterofferPrice"
+        required=true
+        class="two wide"
+      }}
+      {{c-form-field-input-text
+        model=this
+        field="counterofferPrice"
+        required=true
+        class="two wide"
+        unit="Kč"
+      }}
+      {{!-- label="Protinabídka" --}}
 
       {{!-- =========== All elements with label ============================ --}}
       <div class="four fields">

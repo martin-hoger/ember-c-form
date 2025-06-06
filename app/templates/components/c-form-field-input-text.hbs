@@ -30,9 +30,7 @@
     {{yield}}
   {{/if}}
 
-  {{#if required}}
-  {{!-- Who and why wrote this? * was hidden, if input had a label :-(. VA fixed it 5.6.2025 --}}
-  {{!-- {{#if (and required (not label))}} --}}
+  {{#if (and required (not label))}}
     <span class="required">*</span>
   {{/if}}
 

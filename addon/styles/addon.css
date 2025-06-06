@@ -56,6 +56,8 @@ button[disabled]     { cursor: default; background-color: #888888; }
 .field-input-text .input-text-content .suffix-box { position: absolute; right: 1em; top: 6px; }
 .field-input-text .input-text-content .required   { position: absolute; right: 0.4em; top: 4px; font-size: 1.3em; color: red;}
 
+.field label .required                            { font-size: 1.3em; color: red; position: static;}
+
 .display-notification-wrapper-enter                                              { opacity: 0; }
 .display-notification-wrapper-enter.display-notification-wrapper-enter-active    { opacity: 1; -webkit-transition: all .3s ease-in-out; -moz-transition: all .3s ease-in-out; -ms-transition: all .3s ease-in-out; -o-transition: all .3s ease-in-out; transition: all .3s ease-in-out;  }
 .display-notification-wrapper-leave                                              { opacity: 1; }
@@ -120,6 +122,10 @@ button[disabled]     { cursor: default; background-color: #888888; }
 
 .ember-power-select-option .flag32,
 .form-select-country .flag32 { vertical-align: middle; margin: 0 7px 0 0; }
+
+/* c-form-field-input-date */
+.field-input-date                 { position: relative;}
+.field-input-date .required       { position: absolute; right: 0.8em; top: 4px; font-size: 1.3em; color: red;}
 
 /*star rating */
 .star-rating                      { white-space: nowrap; }

@@ -3,7 +3,7 @@
   {{#if fieldComponent.required}}
      <span class="required">*</span>
   {{/if}}
-  {{#if (and fieldComponent.showAudit (has-role "admin-users"))}}
+  {{#if (and fieldComponent.showAudit (has-role "admin-users" "audit-see-small-audit-labels"))}}
     <label class="field-audit-label ui mini label orange" {{action (toggle "openAudit" this)}}>Audit</label>
   {{/if}}
 </label>

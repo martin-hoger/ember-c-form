@@ -9,7 +9,9 @@ export default Ember.Component.extend(FieldMixin, {
   init() {
     this._super(...arguments);
     //Display setting of time.
-    this.set('time', moment(this.get('model.' + this.get('field'))).format('HH:mm'));
+    if (this.get('model.' + this.get('field'))) {
+      this.set('time', moment(this.get('model.' + this.get('field'))).format('HH:mm'));
+    }  
   },
 
   actions: {

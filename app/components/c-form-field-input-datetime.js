@@ -3,15 +3,23 @@ import moment from 'moment';
 import FieldMixin from './c-form-field-mixin';
 
 export default Ember.Component.extend(FieldMixin, {
-  i18n       : null,
-  fieldType  : 'input-datetime',
-    
-  init() {
+  i18n        : null,
+  fieldType   : 'input-datetime',
+  defaultTime : '00:00',
+
+  didReceiveAttrs() {
     this._super(...arguments);
+    this.updateTime();
+  },
+
+  updateTime() {
     //Display setting of time.
     if (this.get('model.' + this.get('field'))) {
-      this.set('time', moment(this.get('model.' + this.get('field'))).format('HH:mm'));
-    }  
+      this.set('time', moment(this.get('model.' + this.get('field'))).format('HH:mm'));   
+    } else {
+      //Default time
+      this.set('time', this.get('defaultTime'));
+    }
   },
 
   actions: {
@@ -22,17 +30,15 @@ export default Ember.Component.extend(FieldMixin, {
   },
   
   //Set datetime
-  setDatetime: function() {
+  setDatetime: function() { 
     var date    = this.get('model.' + this.get('field'));
     var hours   = moment(this.get('time'), 'HH:mm').hours();
     var minutes = moment(this.get('time'), 'HH:mm').minutes();
     var value   = moment(date).startOf('day').add(hours, 'hours').add(minutes, 'minutes')._d;
     this.set('model.' + this.get('field'), value);
-
     // !! NOTE !!
     // Calling sendAction is deprecated, should be replace by closure action (see onChange).
     this.sendAction();
-
     // Send action if it is passed.
     if (this.get('onChange')) {
       this.get('onChange')(value);

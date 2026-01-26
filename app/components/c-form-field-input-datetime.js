@@ -15,10 +15,12 @@ export default Ember.Component.extend(FieldMixin, {
   updateTime() {
     //Display setting of time.
     if (this.get('model.' + this.get('field'))) {
-      this.set('time', moment(this.get('model.' + this.get('field'))).format('HH:mm'));   
-    } else {
-      //Default time
-      this.set('time', this.get('defaultTime'));
+      var time = moment(this.get('model.' + this.get('field'))).format('HH:mm');
+      if (time == '00:00') {
+        //Default time
+        time = this.get('defaultTime');
+      }
+      this.set('time', time);
     }
   },
 

@@ -10,7 +10,10 @@
       onSelection=(action "setDate")
       value=(mut (get model field))
       i18n=i18n
-      options=i18n
+      options=(hash
+        minDate=minDate
+        maxDate=maxDate
+      )
       yearRange="1900,currentYear"
       useUTC=useUTC
       disabled=(if disabled "disabled" "")

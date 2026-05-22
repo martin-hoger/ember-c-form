@@ -20,7 +20,7 @@ import FieldMixin from './c-form-field-mixin';
 import { computed } from '@ember/object';
 
 export default Component.extend(FieldMixin, {
-  fieldType         : 'input-text-num',
+  fieldType         : 'input-text',
   classNameBindings : ['unit:has-unit:', 'suffixIcon:suffix-icon:'],
 
   thousandsSeparator : '\u00A0', // non-breaking space

@@ -21,6 +21,8 @@ export default Ember.Component.extend(FieldMixin, {
         time = this.get('defaultTime');
       }
       this.set('time', time);
+    } else {
+      this.set('time', null);
     }
   },
 
@@ -34,9 +36,10 @@ export default Ember.Component.extend(FieldMixin, {
   //Set datetime
   setDatetime: function() { 
     var date    = this.get('model.' + this.get('field'));
-    var hours   = moment(this.get('time'), 'HH:mm').hours();
-    var minutes = moment(this.get('time'), 'HH:mm').minutes();
-    var value   = moment(date).startOf('day').add(hours, 'hours').add(minutes, 'minutes')._d;
+    var timeStr = this.get('time') || this.get('defaultTime');
+    var hours   = moment(timeStr, 'HH:mm').hours();
+    var minutes = moment(timeStr, 'HH:mm').minutes();
+    var value   = moment(date).startOf('day').add(hours, 'hours').add(minutes, 'minutes').toDate();
     this.set('model.' + this.get('field'), value);
     // !! NOTE !!
     // Calling sendAction is deprecated, should be replace by closure action (see onChange).

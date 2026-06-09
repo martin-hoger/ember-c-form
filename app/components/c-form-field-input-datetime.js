@@ -12,7 +12,16 @@ export default Ember.Component.extend(FieldMixin, {
     this.updateTime();
   },
 
+  // Called when the time input changes (keyboard or native picker click).
+  // Guard prevents re-entry when updateTime sets time from the model.
+  timeObserver: Ember.observer('time', function() {
+    if (!this._updatingFromModel && this.get('model.' + this.get('field'))) {
+      this.setDatetime();
+    }
+  }),
+
   updateTime() {
+    this._updatingFromModel = true;
     //Display setting of time.
     if (this.get('model.' + this.get('field'))) {
       var time = moment(this.get('model.' + this.get('field'))).format('HH:mm');
@@ -24,6 +33,7 @@ export default Ember.Component.extend(FieldMixin, {
     } else {
       this.set('time', null);
     }
+    this._updatingFromModel = false;
   },
 
   actions: {

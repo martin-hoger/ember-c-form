@@ -13,6 +13,7 @@
 import Component from '@ember/component';
 import FieldMixin from './c-form-field-mixin';
 import { computed } from '@ember/object';
+import normalizeUrl from '../utils/normalize-url';
 
 export default Component.extend(FieldMixin, {
   // Input type: text, password, etc...
@@ -20,9 +21,23 @@ export default Component.extend(FieldMixin, {
   fieldType         : 'input-text',
   classNameBindings : ['unit:has-unit:', 'suffixIcon:suffix-icon:'],
   anonymized        : false,
+  normalizeUrl      : false,
 
   keyUp : function() {
     this.sendAction();
+  },
+
+  focusOut() {
+    if (this.get('normalizeUrl')) {
+      var model = this.get('model');
+      var field = this.get('field');
+      var raw = model.get(field);
+      var normalized = normalizeUrl(raw);
+    
+      if (normalized !== raw) {
+        model.set(field, normalized);
+      }
+    }
   },
 
   anonymizedValue: computed('anonymized', function() {

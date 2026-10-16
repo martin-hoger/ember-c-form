@@ -18,7 +18,18 @@ export default Component.extend({
   title   : null,
 
   click: function() {
-    this.sendAction();
+    if (this.get('disabled') || this.get('loading')) {
+      return;
+    }
+    var action = this.get('action');
+    if (typeof action === 'function') {
+      action();
+      return;
+    }
+    // Legacy string action (deprecated), use closure action: action=(action "name").
+    if (action) {
+      this.sendAction(); // eslint-disable-line ember/closure-actions
+    }
   }
 
 });
